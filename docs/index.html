@@ -37,7 +37,8 @@ document.documentElement.setAttribute('data-theme',t)})();
     <a class="brand" href="index.html" aria-label="Nyall Negm, home"><i aria-hidden="true"></i>Nyall Negm</a>
     <nav class="nav" aria-label="Primary">
       <ul id="nav-list">
-        <li><a href="index.html#career">Career</a></li>
+        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="explore.html">Explore</a></li>
         <li><a href="projects.html">Projects</a></li>
         <li><a href="demo.html">BI demo</a></li>
         <li><a href="how-i-work.html">How I work</a></li>
@@ -63,10 +64,10 @@ document.documentElement.setAttribute('data-theme',t)})();
       <p class="title">Business Intelligence &amp; Solutions Manager</p>
       <p class="pos">I design and build the data platforms and reporting that leadership teams run on, and I turn manual, spreadsheet-driven work into <mark>governed, automated services</mark>.</p>
       <div class="actions">
-        <a class="btn primary" href="projects.html">See my work <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <a class="btn secondary" href="mailto:nyall_negm@hotmail.co.uk?subject=CV%20request"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>Request my CV</a>
+        <a class="btn primary" href="explore.html">Explore what I build <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a class="btn secondary" href="projects.html">See my projects</a>
       </div>
-      <p class="cv-note" id="cv">CV on request, by email.</p>
+      <p class="cv-note" id="cv"><a class="link" href="mailto:nyall_negm@hotmail.co.uk?subject=CV%20request">Request my CV</a> by email.</p>
       <p class="contacts">
         <a href="mailto:nyall_negm@hotmail.co.uk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>nyall_negm@hotmail.co.uk</a>
         <a href="https://www.linkedin.com/in/nyall-negm/" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4V21H3V9.5Zm6.5 0h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4V9.5Z"/></svg>LinkedIn</a>
@@ -159,32 +160,35 @@ document.documentElement.setAttribute('data-theme',t)})();
     <div class="wrap">
       <div class="sec-head">
         <div><p class="kicker">Projects</p><h2 id="work-h">Featured projects</h2></div>
-        <p>Built in my own time. Private by default; dry-run, log, undo, never delete.</p>
+        <p>Work details are anonymised. Personal projects are built in my own time.</p>
       </div>
       <div class="cards">
+        <article class="card">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5M3 17.5l9 5 9-5"/></svg></span>
+          <h3>Group data platform</h3>
+          <p>Data from many sources in one governed, layered platform that refreshes through the day and tells you when something breaks.</p>
+          <ul class="tags" aria-label="Stack"><li>Microsoft Fabric</li><li>Lakehouse</li><li>Pipelines</li><li>Semantic models</li></ul>
+          <p class="learn"><b>What it changed</b>One governed source that every report, app and automation reads from.</p>
+          <a class="link" href="explore.html?node=ready">Explore the platform <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </article>
+        <article class="card">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4M7 10h3M13 8h4M13 12h2"/></svg></span>
+          <h3>Agent control room</h3>
+          <p>A local dashboard to supervise many AI agent projects at once, with a “needs you” stack and a messaging policy.</p>
+          <ul class="tags" aria-label="Stack"><li>Local dashboard</li><li>AI agents</li></ul>
+          <p class="learn"><b>What it changed</b>One person can oversee many parallel workstreams without becoming the message bus.</p>
+          <a class="link" href="explore.html?node=control">Try a mock control room <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </article>
         <article class="card">
           <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16M8 15l3-4 3 2 5-6"/></svg></span>
           <h3>Money Ledger</h3>
           <p>A local finance app. Drop in bank CSV exports; it identifies the bank, de-duplicates everything into one ledger, finds transfers, subscriptions and money leaks, and explains them in plain English.</p>
           <ul class="tags" aria-label="Stack"><li>Python</li><li>FastAPI</li><li>SQLite</li><li>Vanilla JS</li></ul>
           <p class="learn"><b>What I learned</b>Keep AI to the judgement calls; plain code is cheaper, faster and testable for everything else.</p>
-        </article>
-        <article class="card">
-          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><path d="M16.5 13v7M13 16.5h7"/></svg></span>
-          <h3>Lean agent toolkit</h3>
-          <p>A small Claude Code plugin (researcher, analyst, designer, builder, tester, reviewer) with build and maintain skills. It replaced a much heavier first version.</p>
-          <ul class="tags" aria-label="Stack"><li>Claude Code</li><li>Plugin</li><li>Agents</li></ul>
-          <p class="learn"><b>What I learned</b>The system must not become the project. Small and boring beats clever.</p>
-        </article>
-        <article class="card">
-          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2.5" width="14" height="19" rx="2"/><path d="M8.5 7h7M8.5 10.5h7M8.5 14h4"/></svg></span>
-          <h3>kindle-dash</h3>
-          <p>Turns a jailbroken Kindle into an e-ink desk dashboard. An always-on PC renders the frame from widgets (clock, weather, PC stats, AI usage) and pushes it over USB.</p>
-          <ul class="tags" aria-label="Stack"><li>Python</li><li>Pillow</li><li>YAML</li></ul>
-          <p class="learn"><b>What I learned</b>Design where it's cheap to iterate (a PC preview), then push only what changed.</p>
+          <a class="link" href="projects.html#money-ledger">Read more <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </article>
       </div>
-      <p class="center-cta"><a class="link" href="projects.html">All projects <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
+      <p class="center-cta"><a class="link" href="projects.html">All projects <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a> &nbsp;·&nbsp; <a class="link" href="explore.html">Explore the platform</a></p>
     </div>
   </section>
 

@@ -1,11 +1,9 @@
 # Nyall Negm: portfolio site
 
-A static personal portfolio: home (career timeline, skills, featured projects), projects, a live BI demo on invented data
-(fictional "Harbour & Pine Outdoor Co."), a "How I work with AI" page with an interactive system map, and a 404. Plain HTML,
-CSS and JS: no build step, no frameworks, no external requests except Google Fonts. Look B (clean light, cobalt accent) with a
-light/dark toggle.
+My personal portfolio: career, work case studies, an interactive platform explorer with a live BI demo, and how I
+build with AI. Plain HTML, CSS and JavaScript, light and dark themes.
 
-Live (once published): https://atlaslabshq.github.io/portfolio/ ·
+Live (once published): https://atlaslabshq.github.io/portfolio/ · [Platform explorer](https://atlaslabshq.github.io/portfolio/explore.html) ·
 [How I work with AI](https://atlaslabshq.github.io/portfolio/how-i-work.html) (the interactive version of the diagram below)
 
 ## How a change moves (the method, as a flowchart)
@@ -27,8 +25,12 @@ flowchart LR
 ```
 
 ## What's in it
-- **Home**: career timeline, skills, featured projects.
-- **Projects**: things I've built in my own time (repos are private; code available on request).
+- **Home**: career timeline, skills, featured work.
+- **Explore**: an interactive map of the kind of data platform I build, from sources to the people who use it. Try the
+  live BI demo, a simulated approval flow, a data question with an independent recheck, a mock order app and an agent
+  control room. Names and data are invented.
+- **Projects**: work case studies (details anonymised) and things I've built in my own time (repos private; code
+  available on request).
 - **BI demo**: an interactive executive P&L on invented data for a fictional company.
 - **How I work with AI**: the method above, as an interactive diagram.
 

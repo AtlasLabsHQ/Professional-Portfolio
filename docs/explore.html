@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Platform explorer · Nyall Negm</title>
+<meta name="description" content="An interactive map of the kind of platform Nyall Negm builds: sources, a layered data platform, serving, experiences and people, with a live BI demo and mini interactives. Names and data are invented.">
+<link rel="canonical" href="https://atlaslabshq.github.io/portfolio/explore.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nyall Negm">
+<meta property="og:title" content="Platform explorer · Nyall Negm">
+<meta property="og:description" content="An interactive map of the kind of platform Nyall Negm builds: sources, a layered data platform, serving, experiences and people, with a live BI demo and mini interactives. Names and data are invented.">
+<meta property="og:url" content="https://atlaslabshq.github.io/portfolio/explore.html">
+<meta property="og:image" content="https://atlaslabshq.github.io/portfolio/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Nyall Negm, Business Intelligence and Solutions Manager">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='9' y='9' width='14' height='14' rx='3' transform='rotate(45 16 16)' fill='%232445d4'/%3E%3C/svg%3E">
+<script>
+/* set the theme before paint; storage can be blocked, so guard it */
+(function(){var t=null;try{t=localStorage.getItem('nn-theme')}catch(e){}
+if(t!=='light'&&t!=='dark'){t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}
+document.documentElement.setAttribute('data-theme',t)})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top" id="top-bar">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Nyall Negm, home"><i aria-hidden="true"></i>Nyall Negm</a>
+    <nav class="nav" aria-label="Primary">
+      <ul id="nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="explore.html" aria-current="page">Explore</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="demo.html">BI demo</a></li>
+        <li><a href="how-i-work.html">How I work</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="theme" id="theme" type="button" aria-pressed="false" aria-label="Dark mode">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+        <span>Dark mode</span>
+      </button>
+      <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="nav-list">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menu
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="wrap wide page-head" aria-labelledby="page-h" style="padding-bottom:0">
+    <p class="kicker">Platform explorer</p>
+    <h1 id="page-h">Explore what I build</h1>
+    <p class="lede">One map of the kind of platform I design and build, from the sources data starts in to the people who use it. Select any box for what it is, what it changed and my role. The boxes marked “Try it” have something to play with.</p>
+    <p class="banner" role="note"><span class="flag">Invented</span><span>A map of the kind of platform I build. Names and data are invented.</span></p>
+  </section>
+
+  <div class="wrap wide dash">
+    <noscript><p class="noscript">The map’s details and mini demos need JavaScript. A full text version of the map is below.</p></noscript>
+    <div class="xbar">
+      <button class="btn primary small" type="button" id="xfollow">Follow the data</button>
+      <p class="run-status" id="xfstatus" role="status" aria-live="polite">Watch one record move from a source to a person.</p>
+    </div>
+    <p class="sr-only" id="xstatus" role="status" aria-live="polite"></p>
+    <div class="xlayout">
+      <div class="xmapwrap">
+        <div id="xmap">
+          <h2 class="sr-only">The map, in layers</h2>
+          <div class="xlayers">
+      <section class="xlayer" aria-labelledby="xl-sources"><h3 id="xl-sources">Sources</h3><p class="xsub">where data starts</p><ul class="xnodes"><li><button type="button" class="xnode" data-id="src-dw" aria-pressed="false" aria-controls="xpanel">Cloud data warehouse</button></li><li><button type="button" class="xnode" data-id="src-cube" aria-pressed="false" aria-controls="xpanel">On-premises sources</button></li><li><button type="button" class="xnode" data-id="src-sp" aria-pressed="false" aria-controls="xpanel">SharePoint and Dataverse</button></li><li><button type="button" class="xnode" data-id="src-files" aria-pressed="false" aria-controls="xpanel">File stores</button></li></ul></section>
+      <section class="xlayer" aria-labelledby="xl-platform"><h3 id="xl-platform">Data platform</h3><p class="xsub">raw, cleaned, business-ready</p><ul class="xnodes"><li><button type="button" class="xnode" data-id="raw" aria-pressed="false" aria-controls="xpanel">Raw</button></li><li><button type="button" class="xnode" data-id="cleaned" aria-pressed="false" aria-controls="xpanel">Cleaned</button></li><li><button type="button" class="xnode" data-id="ready" aria-pressed="false" aria-controls="xpanel">Business-ready</button></li><li><button type="button" class="xnode" data-id="orch" aria-pressed="false" aria-controls="xpanel">Orchestration pipeline</button></li></ul></section>
+      <section class="xlayer" aria-labelledby="xl-serving"><h3 id="xl-serving">Serving</h3><p class="xsub">what apps and reports read</p><ul class="xnodes"><li><button type="button" class="xnode" data-id="models" aria-pressed="false" aria-controls="xpanel">Semantic models</button></li><li><button type="button" class="xnode" data-id="sqldb" aria-pressed="false" aria-controls="xpanel">SQL database for apps</button></li><li><button type="button" class="xnode" data-id="agents" aria-pressed="false" aria-controls="xpanel">Natural-language data agents</button></li></ul></section>
+      <section class="xlayer" aria-labelledby="xl-exp"><h3 id="xl-exp">Experiences</h3><p class="xsub">what people use</p><ul class="xnodes"><li><button type="button" class="xnode" data-id="exec" aria-pressed="false" aria-controls="xpanel">Executive reporting<span class="xbadge">Try it</span></button></li><li><button type="button" class="xnode" data-id="apps" aria-pressed="false" aria-controls="xpanel">Business apps<span class="xbadge">Try it</span></button></li><li><button type="button" class="xnode" data-id="auto" aria-pressed="false" aria-controls="xpanel">Automations<span class="xbadge">Try it</span></button></li><li><button type="button" class="xnode" data-id="qa" aria-pressed="false" aria-controls="xpanel">Data Q&A desk<span class="xbadge">Try it</span></button></li></ul></section>
+      <section class="xlayer" aria-labelledby="xl-people"><h3 id="xl-people">People</h3><p class="xsub">who it is for</p><ul class="xnodes"><li><button type="button" class="xnode" data-id="csuite" aria-pressed="false" aria-controls="xpanel">C-suite</button></li><li><button type="button" class="xnode" data-id="leaders" aria-pressed="false" aria-controls="xpanel">Regional leaders</button></li><li><button type="button" class="xnode" data-id="ops" aria-pressed="false" aria-controls="xpanel">Operations</button></li><li><button type="button" class="xnode" data-id="clients" aria-pressed="false" aria-controls="xpanel">Clients</button></li></ul></section>
+          </div>
+          <section class="xlane" aria-labelledby="xl-build"><h3 id="xl-build">How it gets built</h3><p class="xsub">the delivery system behind all of the above</p><ul class="xnodes"><li><button type="button" class="xnode" data-id="suite" aria-pressed="false" aria-controls="xpanel">Agentic delivery suite</button></li><li><button type="button" class="xnode" data-id="control" aria-pressed="false" aria-controls="xpanel">Agent control room<span class="xbadge">Try it</span></button></li></ul></section>
+        </div>
+        <div class="xsteps-wrap">
+          <h2>Follow one record</h2>
+          <ol class="steps" id="xfsteps"><li><span>A record starts in a source: here, an order line in the cloud data warehouse.</span></li><li><span>It lands in raw exactly as it arrived.</span></li><li><span>It is cleaned: types fixed, duplicates removed, filed under its subject area.</span></li><li><span>It is joined and defined with the business’s own definitions.</span></li><li><span>The governed model applies row-level security, so only the right people can see it.</span></li><li><span>It appears in the executive report.</span></li><li><span>A leader reads it, and sees only the figures they are meant to.</span></li></ol>
+        </div>
+        <details class="xtext">
+          <summary>Text version of this map</summary>
+          <ul><li><strong>Sources</strong> (where data starts)<ul><li><strong>Cloud data warehouse.</strong> A cloud data warehouse that holds finance and client data. Changed: Read from, never changed. The platform adds the layers, the rules and the monitoring around it. Role: Architect and builder of how it is read.</li><li><strong>On-premises sources.</strong> Sources that live on the company network, reached through a data gateway. Changed: Its figures flow into the same governed platform as everything else, instead of staying in a silo. Role: Architect and builder.</li><li><strong>SharePoint and Dataverse.</strong> Lists, forms and business tables that people already work in. Changed: What teams capture by hand becomes data the platform can use, with checks on the way in. Role: Architect and builder.</li><li><strong>File stores.</strong> Files that arrive from partners and teams. Changed: Files land in the platform on a schedule instead of being opened and re-keyed by hand. Role: Architect and builder.</li></ul></li><li><strong>Data platform</strong> (raw, cleaned, business-ready)<ul><li><strong>Raw.</strong> Data lands exactly as it arrives, so there is always a trail back to the source. Changed: Nothing is lost or silently altered. Role: Architect and builder.</li><li><strong>Cleaned.</strong> Types fixed, duplicates and bad rows handled. Organised by subject area: finance, clients, operations and more. Changed: One tidy, consistent version of each subject area. Role: Architect and builder.</li><li><strong>Business-ready.</strong> Joined together and defined with the business’s own definitions, ready for models and apps. Changed: Every report and app starts from the same numbers. Role: Architect and builder.</li><li><strong>Orchestration pipeline.</strong> One pipeline runs the whole chain through the day, with explicit failure rules (what may carry on, what must stop) and an alert at each stage. Changed: Data refreshes through the day and tells you when something breaks. Role: Architect and builder.</li></ul></li><li><strong>Serving</strong> (what apps and reports read)<ul><li><strong>Semantic models.</strong> Governed models with row-level security, so each leader sees their own figures. Changed: One definition of every measure, and the right people see the right rows. Role: Designed and built.</li><li><strong>SQL database for apps.</strong> A SQL database that apps can read and write, built on the same governed data. Changed: Apps get a proper shared record instead of spreadsheets. Role: Designed and built.</li><li><strong>Natural-language data agents.</strong> Ask a question in plain English and get an answer from the governed data. Changed: Leaders can ask their own questions without waiting for a new report. Role: Designed and built; the executive agent is being added.</li></ul></li><li><strong>Experiences</strong> (what people use)<ul><li><strong>Executive reporting.</strong> A governed view of actual, budget, latest estimate and prior-year performance for the C-suite, with each regional leader seeing their own figures. Now adding a natural-language data agent. Changed: One version of the truth for leadership, instead of separate packs. Role: Designed, built and run.</li><li><strong>Business apps.</strong> A SQL database and web app on Fabric to replace manual, spreadsheet-based order tracking: shared editing with an audit log, saved views and dashboards. Changed: One shared, audited record the operations team can work on together. Status: built; rolling out. Role: Designed and built.</li><li><strong>Automations.</strong> Solutions that take manual processes off people’s desks: a finance approval workflow, collecting data from external partners, and read-only health monitors that check every flow and data pipeline every day. Flows are defined in code and compared with what is live before any change. Changed: Processes that ran on email and spreadsheets now run themselves, with an audit trail and early warning. Role: Designed and built them; I own changes to production.</li><li><strong>Data Q&A desk.</strong> A read-only service that answers ad hoc data questions from the governed data, using the business’s own definitions. Every answer is rechecked by a separate agent before it goes out, and arrives as a ready-to-send reply plus a spreadsheet with the data and notes. Changed: Fast, consistent answers without waiting for a new report. Role: Designed and built.</li></ul></li><li><strong>People</strong> (who it is for)<ul><li><strong>C-suite.</strong> The leadership team. Changed: One version of the truth instead of separate packs. Role: I design the reporting around how they actually read it.</li><li><strong>Regional leaders.</strong> Leaders of each region. Changed: They see their own figures, from the same governed source as everyone else. Role: Row-level security designed and built.</li><li><strong>Operations.</strong> The teams who run orders and day-to-day processes. Changed: One shared, audited record to work on together, and fewer manual steps. Role: Apps and automations designed and built for them.</li><li><strong>Clients.</strong> The clients the group serves. Changed: KPI reporting taken from scoping to live service. Role: Client reporting designed and built.</li></ul></li><li><strong>How it gets built</strong> (the delivery system behind all of the above)<ul><li><strong>Agentic delivery suite.</strong> Toolkits for Power BI reports, Fabric apps and Power Platform, each with roles for requirements, build, independent review, testing and release, under an overseer with a state document and human sign-off. Changed: Many projects in parallel, each supervised, each with an audit trail. Role: Designed and built.</li><li><strong>Agent control room.</strong> A small local dashboard to supervise many AI agent projects at once: a map of every project lead (overseer) by area, the specialist agents under each, a “needs you” stack of decisions waiting on a person, and a console to read and message each one. A policy decides which agents may message which. It runs on the laptop and uses no AI itself. Changed: One person can oversee many parallel workstreams without losing track or becoming the message bus. Role: Designed and built.</li></ul></li></ul>
+        </details>
+      </div>
+      <aside class="xpanel" id="xpanel" aria-labelledby="xp-title" tabindex="-1">
+        <div class="xhead"><h2 id="xp-title">Select a box</h2><button class="btn secondary small xclose" id="xp-close" type="button">Close</button></div>
+        <div id="xp-body"></div>
+        <div id="xp-extra"></div>
+      </aside>
+    </div>
+  </div>
+
+  <div class="xdemo" id="xdemo" role="dialog" aria-modal="true" aria-labelledby="xdemo-t" hidden>
+    <div class="xdemo-bar"><h2 id="xdemo-t">Executive reporting: live demo</h2><button class="btn secondary small" id="xdemo-close" type="button">Close</button></div>
+    <div class="wrap">
+      <p class="banner" role="note"><span class="flag">Invented data</span><span>Invented data for a fictional company. Built to show how I design executive reporting. <a class="link" href="demo.html">Open the full page</a></span></p>
+      <div id="xdemo-root"></div>
+    </div>
+  </div>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot">
+      <div><h2>Get in touch</h2><p class="sub">Email is quickest. Repos are private; code available on request.</p></div>
+      <div class="links">
+        <a class="btn primary" href="mailto:nyall_negm@hotmail.co.uk">nyall_negm@hotmail.co.uk</a>
+        <a class="btn secondary" href="https://www.linkedin.com/in/nyall-negm/" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+    <div class="legal"><p>© 2026 Nyall Negm</p><p>London, UK</p></div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+<script src="assets/hp-data.js"></script>
+<script src="assets/demo.js"></script>
+<script src="assets/explore-data.js"></script>
+<script src="assets/explore.js"></script>
+</body>
+</html>

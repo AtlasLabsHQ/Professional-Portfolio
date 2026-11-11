@@ -37,7 +37,8 @@ document.documentElement.setAttribute('data-theme',t)})();
     <a class="brand" href="index.html" aria-label="Nyall Negm, home"><i aria-hidden="true"></i>Nyall Negm</a>
     <nav class="nav" aria-label="Primary">
       <ul id="nav-list">
-        <li><a href="index.html#career">Career</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="explore.html">Explore</a></li>
         <li><a href="projects.html">Projects</a></li>
         <li><a href="demo.html" aria-current="page">BI demo</a></li>
         <li><a href="how-i-work.html">How I work</a></li>
@@ -65,79 +66,7 @@ document.documentElement.setAttribute('data-theme',t)})();
 
   <div class="wrap dash">
     <noscript><p class="noscript">This demo needs JavaScript to draw its charts. Nothing is sent anywhere; the figures are generated in your browser from a fixed seed.</p></noscript>
-    <p id="status" class="sr-only" role="status" aria-live="polite"></p>
-
-    <form class="filters" id="filters" aria-label="Report filters" onsubmit="return false">
-      <fieldset class="field"><legend>Region</legend>
-        <div class="seg wrap-m"><input type="radio" name="region" id="region-all" value="all" checked><label for="region-all">All</label><input type="radio" name="region" id="region-north" value="north"><label for="region-north">North</label><input type="radio" name="region" id="region-midlands" value="midlands"><label for="region-midlands">Midlands</label><input type="radio" name="region" id="region-south" value="south"><label for="region-south">South</label></div>
-      </fieldset>
-      <div class="field"><label class="lbl" for="product">Product line</label><select id="product"></select></div>
-      <fieldset class="field"><legend>Period</legend>
-        <div class="seg "><input type="radio" name="period" id="period-month" value="month"><label for="period-month">Month</label><input type="radio" name="period" id="period-quarter" value="quarter"><label for="period-quarter">Quarter</label><input type="radio" name="period" id="period-ytd" value="ytd" checked><label for="period-ytd">YTD</label></div>
-      </fieldset>
-      <div class="field"><label class="lbl" for="asat">As at month</label><select id="asat"></select></div>
-      <div class="filter-foot">
-        <p id="scope">Showing: </p>
-        <button class="btn secondary small" type="button" id="reset">Reset filters</button>
-      </div>
-    </form>
-
-    <h2 class="sr-only">Key figures</h2>
-    <div class="kpi-grid" id="kpis"></div>
-
-    <div class="charts">
-      <section class="cbox" aria-labelledby="trend-h">
-        <div class="cbox-head">
-          <div><h2 id="trend-h">Monthly trend</h2><p>Twelve months ending at the chosen month. Columns are actual; the solid line is budget and the dotted line is prior year. Months outside the chosen period are lighter.</p></div>
-          <fieldset class="field" style="min-width:0"><legend class="sr-only">Measure</legend>
-            <div class="seg mini"><input type="radio" name="measure" id="measure-rev" value="rev" checked><label for="measure-rev">Revenue</label><input type="radio" name="measure" id="measure-gm" value="gm"><label for="measure-gm">Gross margin</label><input type="radio" name="measure" id="measure-ebitda" value="ebitda"><label for="measure-ebitda">EBITDA</label></div>
-          </fieldset>
-        </div>
-        <div class="cwrap" id="trend-wrap">
-          <svg class="chart" id="trend" role="img" tabindex="0" aria-labelledby="trend-title" aria-describedby="trend-sum trend-keys">
-            <title id="trend-title">Monthly trend</title>
-          </svg>
-          <div class="tip" id="trend-tip" hidden></div>
-        </div>
-        <p id="trend-sum" class="sr-only"></p>
-        <p id="trend-keys" class="sr-only">Use the left and right arrow keys to move between months, Home and End to jump, Escape to clear.</p>
-        <div class="legend" aria-hidden="true"><span><i></i>Actual</span><span><i class="b"></i>Budget</span><span><i class="p"></i>Prior year</span><span>£ thousands or millions as labelled</span></div>
-        <p class="readout" id="trend-read" aria-live="off">Hover, tap or use the arrow keys on the chart to read a month.</p>
-      </section>
-
-      <section class="cbox" aria-labelledby="bridge-h">
-        <div class="cbox-head">
-          <div><h2 id="bridge-h">EBITDA variance bridge</h2><p id="bridge-lead"></p></div>
-          <fieldset class="field" style="min-width:0"><legend class="sr-only">Bridge from</legend>
-            <div class="seg mini"><input type="radio" name="basis" id="basis-b" value="b" checked><label for="basis-b">Budget</label><input type="radio" name="basis" id="basis-p" value="p"><label for="basis-p">Prior year</label></div>
-          </fieldset>
-        </div>
-        <div class="cwrap" id="bridge-wrap">
-          <svg class="chart" id="bridge" role="group" aria-labelledby="bridge-title" aria-describedby="bridge-sum">
-            <title id="bridge-title">EBITDA variance bridge</title>
-          </svg>
-          <div class="tip" id="bridge-tip" hidden></div>
-        </div>
-        <p id="bridge-sum" class="sr-only"></p>
-        <div class="legend" aria-hidden="true"><span><i class="k"></i><span id="bridge-leg-base">Budget EBITDA</span></span><span><i class="g"></i>▲ Favourable</span><span><i class="r"></i>▼ Adverse</span><span><i></i>Actual EBITDA</span></div>
-        <p class="fine" id="bridge-note" hidden>The value axis does not start at zero, so the movements stay visible. Compare the steps, not the bar heights of the two totals.</p>
-      </section>
-    </div>
-
-    <section class="table-box" aria-labelledby="table-h">
-      <div class="cbox-head">
-        <div><h2 id="table-h">Drill-down: region to product line</h2><p>Select a region to open its product lines. Select a column heading to sort; sorting applies within each level.</p></div>
-        <div class="table-actions"><button class="btn secondary small" type="button" id="exp-all">Expand all</button></div>
-      </div>
-      <div class="tscroll" tabindex="0" role="region" aria-label="Drill-down table, scrolls sideways on small screens">
-        <table class="dt">
-          <caption class="sr-only" id="dt-cap"></caption>
-          <thead id="dt-head"></thead>
-          <tbody id="dt-body"></tbody>
-        </table>
-      </div>
-      <p class="fine">Variances are against budget or prior year for the chosen period. ▲ and ▼ show direction; green is favourable and red is adverse, and the +/− sign always carries the meaning. Gross margin is revenue less cost of sales; EBITDA is gross margin less operating expenses. All figures are invented.</p>
-    </section>
+    <div id="demo-root"></div>
   </div>
 </main>
 
