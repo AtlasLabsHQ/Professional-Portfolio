@@ -29,7 +29,7 @@
 <script>
 /* set the theme before paint; storage can be blocked, so guard it */
 (function(){var t=null;try{t=localStorage.getItem('nn-theme')}catch(e){}
-if(t!=='light'&&t!=='dark'){t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}
+if(t!=='light'&&t!=='dark'){t='light'}
 document.documentElement.setAttribute('data-theme',t)})();
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
