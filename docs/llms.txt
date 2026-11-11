@@ -8,7 +8,9 @@ This is a static personal portfolio: plain HTML, CSS and a little JavaScript, no
 
 - [Home](index.html): career story, skills, featured projects and a preview of the BI demo.
 - [Platform explorer](explore.html): an interactive map of the kind of data platform I build, with mini demos (executive reporting, automations, a data Q&A desk, a business app and an agent control room). Names and data are invented.
-- [Projects](projects.html): anonymised work case studies, and personal projects built in my own time.
+- [Projects](projects.html): anonymised work case studies, each with a demo that runs on invented data, and personal projects built in my own time.
+- [Career](career.html): my career as an interactive CV, with a one-page Skim view and a Story view that links each achievement to its demo.
+- [Code](projects.html#code): the repositories behind the personal projects, with what each one demonstrates.
 - [BI demo](demo.html): a live executive P&L report for a fictional company, Harbour & Pine Outdoor Co. Every figure is invented and generated in the browser.
 - [How I work with AI](how-i-work.html): how I run AI agents in delivery, with independent review, tests and a human sign-off before anything reaches production.
 
@@ -16,7 +18,7 @@ This is a static personal portfolio: plain HTML, CSS and a little JavaScript, no
 
 - Email: nyall_negm@hotmail.co.uk
 - LinkedIn: https://www.linkedin.com/in/nyall-negm/
-- CV on request, by email.
+- Full CV on request, by email.
 
 ## Notes for human readers
 

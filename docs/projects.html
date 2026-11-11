@@ -11,12 +11,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Projects · Nyall Negm</title>
-<meta name="description" content="Projects by Nyall Negm: anonymised work case studies (a data platform, automations, agent tooling) and personal projects built in my own time.">
+<meta name="description" content="Projects by Nyall Negm: anonymised work case studies, each with a demo you can try, personal projects built in my own time, and the code behind them.">
 <link rel="canonical" href="https://atlaslabshq.github.io/portfolio/projects.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Nyall Negm">
 <meta property="og:title" content="Projects · Nyall Negm">
-<meta property="og:description" content="Projects by Nyall Negm: anonymised work case studies (a data platform, automations, agent tooling) and personal projects built in my own time.">
+<meta property="og:description" content="Projects by Nyall Negm: anonymised work case studies, each with a demo you can try, personal projects built in my own time, and the code behind them.">
 <meta property="og:url" content="https://atlaslabshq.github.io/portfolio/projects.html">
 <meta property="og:image" content="https://atlaslabshq.github.io/portfolio/assets/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -48,10 +48,14 @@ document.documentElement.setAttribute('data-theme',t)})();
         <li><a href="index.html">Home</a></li>
         <li><a href="explore.html">Explore</a></li>
         <li><a href="projects.html" aria-current="page">Projects</a></li>
+        <li><a href="career.html">Career</a></li>
         <li><a href="demo.html">BI demo</a></li>
         <li><a href="how-i-work.html">How I work</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
+      <button class="cmdk-btn" id="cmdk-btn" type="button" aria-haspopup="dialog" aria-expanded="false" aria-label="Jump to anything">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 5 5"/></svg><kbd>Ctrl K</kbd>
+      </button>
       <button class="theme" id="theme" type="button" aria-pressed="false" aria-label="Dark mode">
         <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
         <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
@@ -68,145 +72,209 @@ document.documentElement.setAttribute('data-theme',t)})();
   <section class="wrap page-head" aria-labelledby="page-h">
     <p class="kicker">Projects</p>
     <h1 id="page-h">Projects</h1>
-    <p class="lede">What I build at work, with the details anonymised, and what I build in my own time. See how the work fits together in the <a class="link" href="explore.html">Platform explorer</a>.</p>
+    <p class="lede">What I build at work, with the details anonymised, and what I build in my own time. Every work project has a demo you can try right here. To see how they fit together, open the <a class="link" href="explore.html">Platform explorer</a>.</p>
   </section>
 
   <section class="wrap dash" aria-labelledby="work-h" id="work">
-    <div class="sec-head"><div><h2 id="work-h">At work (details anonymised)</h2></div><p>Generic names only, and no real data, figures or screenshots.</p></div>
-    <div class="proj-list">
-      <article class="proj" id="group-data-platform">
-        <div>
+    <div class="sec-head"><div><h2 id="work-h">At work (details anonymised)</h2></div><p>Hands-on first: I can do every step myself, and the foundations were built that way. Newer work and changes now run through my agent suite, with me reviewing. Generic names only; every demo runs on invented data.</p></div>
+    <div class="case-list">
+      <article class="case" id="group-data-platform" aria-labelledby="group-data-platform-h">
+        <div class="case-top">
           <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5M3 17.5l9 5 9-5"/></svg></span>
-          <h3 class="ptitle">Group data platform</h3>
-          <ul class="tags" aria-label="Stack"><li>Microsoft Fabric</li><li>Lakehouse</li><li>Pipelines</li><li>Semantic models</li></ul>
+          <h3 class="ptitle" id="group-data-platform-h">Group data platform</h3>
         </div>
-        <div class="body">
-          <h4>What it is</h4>
-          <p>Designed and built from scratch. Data from a cloud data warehouse (Snowflake), on-premises sources (through a data gateway), SharePoint, Dataverse and file stores lands in a layered lakehouse (raw, cleaned, business-ready), organised by subject area: finance, clients, operations and more. One orchestration pipeline runs the whole chain through the day with explicit failure rules (what may carry on, what must stop) and an alert at each stage. On top sit governed semantic models with row-level security, a SQL database for apps, and natural-language data agents.</p>
-          <h4>What it changed</h4>
-          <p>One governed source that every report, app and automation reads from, refreshed through the day, that tells you when something breaks.</p>
-          <h4>My role</h4>
-          <p>Architect and builder.</p>
+        <div class="hands"><p class="lbl">Hands-on</p><p class="case-sum">I designed and built it from scratch: the loads, the layered lakehouse, the orchestration pipeline with its failure rules and alerts, and the governed semantic models with row-level security.</p><ul class="tags" aria-label="Hands-on stack"><li>Microsoft Fabric</li><li>Pipelines</li><li>Notebooks</li><li>SQL</li><li>Power Query</li><li>DAX</li><li>Semantic models</li></ul></div>
+        <dl class="case-dl">
+          <div><dt>What it changed</dt><dd>One governed source that every report, app and automation reads from, refreshed through the day, that tells you when something breaks.</dd></div>
+          <div><dt>My role</dt><dd>Architect and builder.</dd></div>
+          <div class="ag"><dt>Now with agents</dt><dd>Changes to loads, models and reports can now be built with agent help; I review and sign them off. The pipeline itself runs on a schedule, with no AI, and a data agent reads the governed model to answer questions.</dd></div>
+        </dl>
+        <div class="case-act">
+          <a class="btn primary small" href="explore.html?stage=platform" data-stage="platform" aria-haspopup="dialog"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M2.5 1.5v7l6-3.5z" fill="currentColor"/></svg>Try it<span class="sr-only">: Group data platform</span></a>
+          <a class="link" href="explore.html?node=ready">See it on the platform map</a>
         </div>
-        <div class="proj-flow"><h4>How it works</h4><figure class="flowd" aria-label="How it works: Group data platform" style="--n:6"><div class="fd-vis" aria-hidden="true"><div class="fd-n" style="--i:0"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.5" rx="7" ry="2.5"/><path d="M5 5.5v6c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-6M5 11.5v6c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-6"/></svg></span><span class="fd-l">Sources</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:1"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13.5h4l1.5 2.5h5l1.5-2.5h4"/><path d="M5.5 7.5 4 13.5v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4l-1.5-6a2 2 0 0 0-2-1.5h-9a2 2 0 0 0-2 1.5z"/></svg></span><span class="fd-l">Raw</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:2"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16l-6 7.5V19l-4-2v-4.5z"/></svg></span><span class="fd-l">Cleaned</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:3"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 19 6v5.5c0 4.2-2.9 7.4-7 9-4.1-1.6-7-4.8-7-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span><span class="fd-l">Business-ready</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:4"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3.5 8 4.5-8 4.5-8-4.5z"/><path d="m4 12.5 8 4.5 8-4.5"/></svg></span><span class="fd-l">Models, SQL database and data agents</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:5"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V4M4 20h16"/><path d="M8 16v-4M12 16V8M16 16v-6"/></svg></span><span class="fd-l">Reports, apps and automations</span></div><div class="fd-rail watch" style="grid-column:2/5;--span:3"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.3-5.7"/><path d="M20 4.5v4h-4"/><path d="M12 8v4l2.5 1.5"/></svg></span><span>One orchestration pipeline runs the chain through the day, with an alert at each stage</span></div></div><figcaption class="sr-only"><ol><li>Sources</li><li>Raw</li><li>Cleaned</li><li>Business-ready</li><li>Models, SQL database and data agents</li><li>Reports, apps and automations</li></ol><p>Throughout: One orchestration pipeline runs the chain through the day, with an alert at each stage.</p></figcaption></figure></div>
+        <details class="case-more">
+          <summary>How it works, in full<span class="sr-only">: Group data platform</span></summary>
+          <div class="case-more-b">
+            <h4>What it is</h4>
+            <p>Designed and built from scratch. Data from a cloud data warehouse (Snowflake), on-premises sources (through a data gateway), SharePoint, Dataverse and file stores lands in a layered lakehouse (raw, cleaned, business-ready), organised by subject area: finance, clients, operations and more. One orchestration pipeline runs the whole chain through the day with explicit failure rules (what may carry on, what must stop) and an alert at each stage. On top sit governed semantic models with row-level security, a SQL database for apps, and natural-language data agents.</p>
+            <div class="proj-flow"><h4>How it works</h4><figure class="flowd" aria-label="How it works: Group data platform" style="--n:6"><div class="fd-vis" aria-hidden="true"><div class="fd-n" style="--i:0"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.5" rx="7" ry="2.5"/><path d="M5 5.5v6c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-6M5 11.5v6c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-6"/></svg></span><span class="fd-l">Sources</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:1"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13.5h4l1.5 2.5h5l1.5-2.5h4"/><path d="M5.5 7.5 4 13.5v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4l-1.5-6a2 2 0 0 0-2-1.5h-9a2 2 0 0 0-2 1.5z"/></svg></span><span class="fd-l">Raw</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:2"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16l-6 7.5V19l-4-2v-4.5z"/></svg></span><span class="fd-l">Cleaned</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:3"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 19 6v5.5c0 4.2-2.9 7.4-7 9-4.1-1.6-7-4.8-7-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span><span class="fd-l">Business-ready</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:4"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3.5 8 4.5-8 4.5-8-4.5z"/><path d="m4 12.5 8 4.5 8-4.5"/></svg></span><span class="fd-l">Semantic models and SQL database</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:5"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V4M4 20h16"/><path d="M8 16v-4M12 16V8M16 16v-6"/></svg></span><span class="fd-l">Reports, apps and automations</span></div><div class="fd-rail watch" style="grid-column:2/5;--span:3"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.3-5.7"/><path d="M20 4.5v4h-4"/><path d="M12 8v4l2.5 1.5"/></svg></span><span>One orchestration pipeline runs the chain through the day, with an alert at each stage. Scheduled, no AI</span></div></div><figcaption class="sr-only"><ol><li>Sources</li><li>Raw</li><li>Cleaned</li><li>Business-ready</li><li>Semantic models and SQL database</li><li>Reports, apps and automations</li></ol><p>Throughout: One orchestration pipeline runs the chain through the day, with an alert at each stage. Scheduled, no AI.</p></figcaption></figure></div>
+          </div>
+        </details>
       </article>
-      <article class="proj" id="automation-suite">
-        <div>
+      <article class="case" id="automation-suite" aria-labelledby="automation-suite-h">
+        <div class="case-top">
           <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/></svg></span>
-          <h3 class="ptitle">Automation suite</h3>
-          <ul class="tags" aria-label="Stack"><li>Power Automate</li><li>SharePoint</li><li>Dataverse</li><li>Fabric</li></ul>
+          <h3 class="ptitle" id="automation-suite-h">Automation suite</h3>
         </div>
-        <div class="body">
-          <h4>What it is</h4>
-          <p>A set of solutions that take manual processes off people’s desks: a finance approval workflow (a form, a tracked list, an approval chain and a hand-off to finance), collecting data from external partners (requests out, answers back, checked and archived), and read-only health monitors that check every flow and data pipeline every day and send a digest plus failure alerts. Flows are defined in code by a build script and compared with what is live before any change, with read-only allow-lists for the monitors.</p>
-          <h4>What it changed</h4>
-          <p>Processes that used to run on email and spreadsheets now run themselves, with an audit trail and early warning.</p>
-          <h4>My role</h4>
-          <p>Designed and built them; I own changes to production.</p>
+        <div class="hands"><p class="lbl">Hands-on</p><p class="case-sum">I designed and built the flows: a finance approval workflow, partner data collection, data sync into familiar lists, and read-only daily health monitors.</p><ul class="tags" aria-label="Hands-on stack"><li>Power Automate</li><li>SharePoint</li><li>Dataverse</li><li>Dataflow Gen2</li></ul></div>
+        <dl class="case-dl">
+          <div><dt>What it changed</dt><dd>Processes that used to run on email and spreadsheets now run themselves, with an audit trail and early warning.</dd></div>
+          <div><dt>My role</dt><dd>Designed and built them; I own changes to production.</dd></div>
+          <div class="ag"><dt>Now with agents</dt><dd>An agent can help write or change a flow in code, compared with what is live; it never runs one. I approve production. The daily monitor is automated, with no AI.</dd></div>
+        </dl>
+        <div class="case-act">
+          <a class="btn primary small" href="explore.html?stage=auto" data-stage="auto" aria-haspopup="dialog"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M2.5 1.5v7l6-3.5z" fill="currentColor"/></svg>Try it<span class="sr-only">: Automation suite</span></a>
+          <a class="link" href="explore.html?node=auto">See it on the platform map</a>
         </div>
-        <div class="proj-flow"><h4>How it works</h4><figure class="flowd" aria-label="How it works: Automation suite" style="--n:5"><div class="fd-vis" aria-hidden="true"><div class="fd-n" style="--i:0"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3.5" width="14" height="17" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></span><span class="fd-l">A form or a schedule starts it</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:1"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11"/><path d="m3.5 6 1 1 2-2M3.5 12l1 1 2-2M3.5 18l1 1 2-2"/></svg></span><span class="fd-l">Checks and steps</span></div><i class="fd-arr"></i><div class="fd-n gate" style="--i:2"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span><span class="fd-l">Approval</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:3"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h12M12 7l5 5-5 5"/><path d="M20 5v14"/></svg></span><span class="fd-l">Hand-off</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:4"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h10l3 3v13H6z"/><path d="M9 11h7M9 15h5"/></svg></span><span class="fd-l">Audit log</span></div><div class="fd-rail watch" style="grid-column:1/6;--span:5"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="2.8"/></svg></span><span>A read-only monitor checks every flow daily: a digest, plus an alert on failure</span></div></div><figcaption class="sr-only"><ol><li>A form or a schedule starts it</li><li>Checks and steps</li><li>Approval (a check)</li><li>Hand-off</li><li>Audit log</li></ol><p>Throughout: A read-only monitor checks every flow daily: a digest, plus an alert on failure.</p></figcaption></figure></div>
+        <details class="case-more">
+          <summary>How it works, in full<span class="sr-only">: Automation suite</span></summary>
+          <div class="case-more-b">
+            <h4>What it is</h4>
+            <p>A set of solutions that take manual processes off people’s desks: a finance approval workflow (a form, a tracked list, an approval chain and a hand-off to finance), collecting data from external partners (requests out, answers back, checked and archived), data-sync solutions that keep a working SharePoint list in step with governed data (a dataflow prepares the data; one flow creates new items, one updates changed ones, one archives what has gone, so people work in a familiar list while the data stays governed), and read-only health monitors that check every flow and data pipeline every day and send a digest plus failure alerts. Flows are defined in code by a build script and compared with what is live before any change, with read-only allow-lists for the monitors.</p>
+            <div class="proj-flow"><h4>How it works</h4><figure class="flowd" aria-label="How it works: Automation suite" style="--n:5"><div class="fd-vis" aria-hidden="true"><div class="fd-n" style="--i:0"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3.5" width="14" height="17" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></span><span class="fd-l">A form or a schedule starts it</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:1"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11"/><path d="m3.5 6 1 1 2-2M3.5 12l1 1 2-2M3.5 18l1 1 2-2"/></svg></span><span class="fd-l">Checks and steps</span></div><i class="fd-arr"></i><div class="fd-n gate" style="--i:2"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span><span class="fd-l">Approval</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:3"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h12M12 7l5 5-5 5"/><path d="M20 5v14"/></svg></span><span class="fd-l">Hand-off</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:4"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h10l3 3v13H6z"/><path d="M9 11h7M9 15h5"/></svg></span><span class="fd-l">Audit log</span></div><div class="fd-rail watch" style="grid-column:1/6;--span:5"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="2.8"/></svg></span><span>A read-only monitor checks every flow daily: a digest, plus an alert on failure</span></div></div><p class="fd-cap" aria-hidden="true">The data-sync pattern</p><div class="fd-vis fd-vis2" aria-hidden="true" style="--n:4"><div class="fd-n" style="--i:0"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="7" ry="2.8"/><path d="M5 6v6c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8V6M5 12v6c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8v-6"/></svg></span><span class="fd-l">Governed data (dataflow)</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:1"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h13M13 4l4 4-4 4M20 16H7M11 12l-4 4 4 4"/></svg></span><span class="fd-l">Sync flows: create · update · archive</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:2"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="16" rx="2"/><path d="M3.5 10h17M3.5 15h17M10 4v16"/></svg></span><span class="fd-l">Working list (SharePoint)</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:3"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="9" r="2.5"/><circle cx="16" cy="9" r="2.5"/><path d="M3.5 18.5c.4-2.6 2.2-4.3 4.5-4.3s4.1 1.7 4.5 4.3M11.5 18.5c.4-2.6 2.2-4.3 4.5-4.3s4.1 1.7 4.5 4.3"/></svg></span><span class="fd-l">People</span></div></div><figcaption class="sr-only"><ol><li>A form or a schedule starts it</li><li>Checks and steps</li><li>Approval (a check)</li><li>Hand-off</li><li>Audit log</li></ol><p>Throughout: A read-only monitor checks every flow daily: a digest, plus an alert on failure.</p><p>The data-sync pattern:</p><ol><li>Governed data (dataflow)</li><li>Sync flows: create · update · archive</li><li>Working list (SharePoint)</li><li>People</li></ol></figcaption></figure></div>
+          </div>
+        </details>
       </article>
-      <article class="proj" id="agent-control-room">
-        <div>
+      <article class="case" id="agent-control-room" aria-labelledby="agent-control-room-h">
+        <div class="case-top">
           <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4M7 10h3M13 8h4M13 12h2"/></svg></span>
-          <h3 class="ptitle">Agent control room</h3>
-          <ul class="tags" aria-label="Stack"><li>Local dashboard</li><li>AI agents</li></ul>
+          <h3 class="ptitle" id="agent-control-room-h">Agent control room</h3>
         </div>
-        <div class="body">
-          <h4>What it is</h4>
-          <p>A small local dashboard to supervise many AI agent projects at once: a map of every project lead (“overseer”) grouped by area, the specialist agents working under each, a “needs you” stack of decisions waiting on a person, and a console to read and message each one. A policy decides which agents may message which. It runs on the laptop and uses no AI itself.</p>
-          <h4>What it changed</h4>
-          <p>One person can oversee many parallel workstreams without losing track or becoming the message bus.</p>
-          <h4>My role</h4>
-          <p>Designed and built it.</p>
+        <div class="hands"><p class="lbl">Hands-on</p><p class="case-sum">I designed and built a small local dashboard to supervise many agent projects: every project lead by area, a “needs you” stack, a console and a messaging policy. It uses no AI itself.</p><ul class="tags" aria-label="Hands-on stack"><li>Local dashboard</li><li>Messaging policy</li></ul></div>
+        <dl class="case-dl">
+          <div><dt>What it changed</dt><dd>One person can oversee many parallel workstreams without losing track or becoming the message bus.</dd></div>
+          <div><dt>My role</dt><dd>Designed and built it.</dd></div>
+          <div class="ag"><dt>Now with agents</dt><dd>This is the agent side itself: it watches my agent projects, and every decision that reaches production waits for me.</dd></div>
+        </dl>
+        <div class="case-act">
+          <a class="btn primary small" href="explore.html?stage=control" data-stage="control" aria-haspopup="dialog"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M2.5 1.5v7l6-3.5z" fill="currentColor"/></svg>Try it<span class="sr-only">: Agent control room</span></a>
+          <a class="link" href="explore.html?node=control">See it on the platform map</a>
         </div>
-        <div class="proj-flow"><h4>How it works</h4><figure class="flowd" aria-label="How it works: Agent control room" style="--n:5"><div class="fd-vis" aria-hidden="true"><div class="fd-n" style="--i:0"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7.5" r="3"/><path d="M6 19.5c.6-3.3 3-5.5 6-5.5s5.4 2.2 6 5.5"/></svg></span><span class="fd-l">Project leads (overseers)</span></div><i class="fd-arr"></i><div class="fd-n gate" style="--i:1"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg></span><span class="fd-l">Policy: who may message whom</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:2"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="9" r="2.5"/><circle cx="16" cy="9" r="2.5"/><path d="M3.5 18.5c.4-2.6 2.2-4.3 4.5-4.3s4.1 1.7 4.5 4.3M11.5 18.5c.4-2.6 2.2-4.3 4.5-4.3s4.1 1.7 4.5 4.3"/></svg></span><span class="fd-l">Specialist agents</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:3"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 4 8 4-8 4-8-4z"/><path d="m4 12 8 4 8-4M4 16l8 4 8-4"/></svg></span><span class="fd-l">“Needs you” stack</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:4"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.7-3.8 3.5-6.2 7-6.2s6.3 2.4 7 6.2"/></svg></span><span class="fd-l">A person decides</span></div><div class="fd-rail watch" style="grid-column:1/6;--span:5"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2"/><path d="m7 10 3 2.5L7 15M12.5 15H17"/></svg></span><span>One console to read and message each project lead</span></div></div><figcaption class="sr-only"><ol><li>Project leads (overseers)</li><li>Policy: who may message whom (a check)</li><li>Specialist agents</li><li>“Needs you” stack</li><li>A person decides</li></ol><p>Throughout: One console to read and message each project lead.</p></figcaption></figure></div>
+        <details class="case-more">
+          <summary>How it works, in full<span class="sr-only">: Agent control room</span></summary>
+          <div class="case-more-b">
+            <h4>What it is</h4>
+            <p>A small local dashboard to supervise many AI agent projects at once: a map of every project lead (“overseer”) grouped by area, the specialist agents working under each, a “needs you” stack of decisions waiting on a person, and a console to read and message each one. A policy decides which agents may message which. It runs on the laptop and uses no AI itself.</p>
+            <div class="proj-flow"><h4>How it works</h4><figure class="flowd" aria-label="How it works: Agent control room" style="--n:5"><div class="fd-vis" aria-hidden="true"><div class="fd-n" style="--i:0"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7.5" r="3"/><path d="M6 19.5c.6-3.3 3-5.5 6-5.5s5.4 2.2 6 5.5"/></svg></span><span class="fd-l">Project leads (overseers)</span></div><i class="fd-arr"></i><div class="fd-n gate" style="--i:1"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg></span><span class="fd-l">Policy: who may message whom</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:2"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="9" r="2.5"/><circle cx="16" cy="9" r="2.5"/><path d="M3.5 18.5c.4-2.6 2.2-4.3 4.5-4.3s4.1 1.7 4.5 4.3M11.5 18.5c.4-2.6 2.2-4.3 4.5-4.3s4.1 1.7 4.5 4.3"/></svg></span><span class="fd-l">Specialist agents</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:3"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 4 8 4-8 4-8-4z"/><path d="m4 12 8 4 8-4M4 16l8 4 8-4"/></svg></span><span class="fd-l">“Needs you” stack</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:4"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.7-3.8 3.5-6.2 7-6.2s6.3 2.4 7 6.2"/></svg></span><span class="fd-l">A person decides</span></div><div class="fd-rail watch" style="grid-column:1/6;--span:5"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2"/><path d="m7 10 3 2.5L7 15M12.5 15H17"/></svg></span><span>One console to read and message each project lead</span></div></div><figcaption class="sr-only"><ol><li>Project leads (overseers)</li><li>Policy: who may message whom (a check)</li><li>Specialist agents</li><li>“Needs you” stack</li><li>A person decides</li></ol><p>Throughout: One console to read and message each project lead.</p></figcaption></figure></div>
+          </div>
+        </details>
       </article>
-      <article class="proj" id="agentic-delivery-suite">
-        <div>
+      <article class="case" id="agentic-delivery-suite" aria-labelledby="agentic-delivery-suite-h">
+        <div class="case-top">
           <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><path d="M16.5 13v7M13 16.5h7"/></svg></span>
-          <h3 class="ptitle">Agentic delivery suite</h3>
-          <ul class="tags" aria-label="Stack"><li>Claude Code</li><li>Power BI</li><li>Fabric</li><li>Power Platform</li></ul>
+          <h3 class="ptitle" id="agentic-delivery-suite-h">Agentic delivery suite</h3>
         </div>
-        <div class="body">
-          <h4>What it is</h4>
-          <p>Toolkits for Power BI reports, Fabric apps and Power Platform, each with roles for requirements, build, independent review, testing and release, under an overseer with a state document and human sign-off.</p>
-          <h4>What it changed</h4>
-          <p>Many projects in parallel, each supervised, each with an audit trail.</p>
-          <h4>My role</h4>
-          <p>Designed and built it. See <a class="link" href="how-i-work.html">How I work with AI</a>.</p>
+        <div class="hands"><p class="lbl">Hands-on</p><p class="case-sum">I designed the method and built the toolkits from how I deliver by hand: roles for requirements, build, review, test and release, a state document per project, and the gates.</p><ul class="tags" aria-label="Hands-on stack"><li>Claude Code</li><li>Power BI</li><li>Fabric</li><li>Power Platform</li></ul></div>
+        <dl class="case-dl">
+          <div><dt>What it changed</dt><dd>Many projects in parallel, each supervised, each with an audit trail.</dd></div>
+          <div><dt>My role</dt><dd>Designed and built it. See <a class="link" href="how-i-work.html">How I work with AI</a>.</dd></div>
+          <div class="ag"><dt>Now with agents</dt><dd>It is how I scale that method: separate builder, reviewer and tester agents, none approving its own work, and I sign off each production change.</dd></div>
+        </dl>
+        <div class="case-act">
+          <a class="btn primary small" href="explore.html?stage=suite" data-stage="suite" aria-haspopup="dialog"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M2.5 1.5v7l6-3.5z" fill="currentColor"/></svg>Try it<span class="sr-only">: Agentic delivery suite</span></a>
+          <a class="link" href="explore.html?node=suite">See it on the platform map</a>
         </div>
-        <div class="proj-flow"><h4>How it works</h4><figure class="flowd" aria-label="How it works: Agentic delivery suite" style="--n:6"><div class="fd-vis" aria-hidden="true"><div class="fd-n" style="--i:0"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5h9l3 3v14H6z"/><path d="M9 10h6M9 14h6M9 18h3"/></svg></span><span class="fd-l">Brief</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:1"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="m9 12 2 2 4-4"/></svg></span><span class="fd-l">Overseer and state document</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:2"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="9" r="2.5"/><circle cx="16" cy="9" r="2.5"/><path d="M3.5 18.5c.4-2.6 2.2-4.3 4.5-4.3s4.1 1.7 4.5 4.3M11.5 18.5c.4-2.6 2.2-4.3 4.5-4.3s4.1 1.7 4.5 4.3"/></svg></span><span class="fd-l">Analyst, builder, reviewer, tester</span></div><i class="fd-arr"></i><div class="fd-n gate" style="--i:3"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span><span class="fd-l">Parity check</span></div><i class="fd-arr"></i><div class="fd-n gate" style="--i:4"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.7-3.8 3.5-6.2 7-6.2s6.3 2.4 7 6.2"/></svg></span><span class="fd-l">Human sign-off</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:5"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5v11M7.5 10 12 14.5 16.5 10"/><path d="M4.5 17v2.5h15V17"/></svg></span><span class="fd-l">Release, dry run first</span></div><div class="fd-rail loop" style="grid-column:3/5;--span:2"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.3-5.7"/><path d="M20 4.5v4h-4"/></svg></span><span>Fails the check: back to the builder</span></div></div><figcaption class="sr-only"><ol><li>Brief</li><li>Overseer and state document</li><li>Analyst, builder, reviewer, tester</li><li>Parity check (a check)</li><li>Human sign-off (a check)</li><li>Release, dry run first</li></ol><p>If it fails: Fails the check: back to the builder.</p></figcaption></figure></div>
+        <details class="case-more">
+          <summary>How it works, in full<span class="sr-only">: Agentic delivery suite</span></summary>
+          <div class="case-more-b">
+            <h4>What it is</h4>
+            <p>Toolkits for Power BI reports, Fabric apps and Power Platform, each with roles for requirements, build, independent review, testing and release, under an overseer with a state document and human sign-off.</p>
+            <div class="proj-flow"><h4>How it works</h4><figure class="flowd" aria-label="How it works: Agentic delivery suite" style="--n:6"><div class="fd-vis" aria-hidden="true"><div class="fd-n" style="--i:0"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5h9l3 3v14H6z"/><path d="M9 10h6M9 14h6M9 18h3"/></svg></span><span class="fd-l">Brief</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:1"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="m9 12 2 2 4-4"/></svg></span><span class="fd-l">Overseer and state document</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:2"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="9" r="2.5"/><circle cx="16" cy="9" r="2.5"/><path d="M3.5 18.5c.4-2.6 2.2-4.3 4.5-4.3s4.1 1.7 4.5 4.3M11.5 18.5c.4-2.6 2.2-4.3 4.5-4.3s4.1 1.7 4.5 4.3"/></svg></span><span class="fd-l">Analyst, builder, reviewer, tester</span></div><i class="fd-arr"></i><div class="fd-n gate" style="--i:3"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span><span class="fd-l">Parity check</span></div><i class="fd-arr"></i><div class="fd-n gate" style="--i:4"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.7-3.8 3.5-6.2 7-6.2s6.3 2.4 7 6.2"/></svg></span><span class="fd-l">Human sign-off</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:5"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5v11M7.5 10 12 14.5 16.5 10"/><path d="M4.5 17v2.5h15V17"/></svg></span><span class="fd-l">Release, dry run first</span></div><div class="fd-rail loop" style="grid-column:3/5;--span:2"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.3-5.7"/><path d="M20 4.5v4h-4"/></svg></span><span>Fails the check: back to the builder</span></div></div><figcaption class="sr-only"><ol><li>Brief</li><li>Overseer and state document</li><li>Analyst, builder, reviewer, tester</li><li>Parity check (a check)</li><li>Human sign-off (a check)</li><li>Release, dry run first</li></ol><p>If it fails: Fails the check: back to the builder.</p></figcaption></figure></div>
+          </div>
+        </details>
       </article>
-      <article class="proj" id="executive-scorecard">
-        <div>
+      <article class="case" id="executive-scorecard" aria-labelledby="executive-scorecard-h">
+        <div class="case-top">
           <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16M8 15l3-4 3 2 5-6"/></svg></span>
-          <h3 class="ptitle">Executive scorecard</h3>
-          <ul class="tags" aria-label="Stack"><li>Power BI</li><li>Fabric</li><li>Row-level security</li></ul>
+          <h3 class="ptitle" id="executive-scorecard-h">Executive scorecard</h3>
         </div>
-        <div class="body">
-          <h4>What it is</h4>
-          <p>A governed view of actual, budget, latest estimate and prior-year performance for the C-suite, with each regional leader seeing their own figures. Now adding a natural-language data agent so leaders can ask their own questions.</p>
-          <h4>What it changed</h4>
-          <p>One version of the truth for leadership, instead of separate packs.</p>
-          <h4>My role</h4>
-          <p>Designed, built and run it. Try a fictional version in the <a class="link" href="demo.html">live BI demo</a>.</p>
+        <div class="hands"><p class="lbl">Hands-on</p><p class="case-sum">I designed, built and run it: the semantic model and the DAX measures for actual, budget, latest estimate and prior year, row-level security by region, and the report pages.</p><ul class="tags" aria-label="Hands-on stack"><li>Power BI</li><li>DAX</li><li>Semantic modelling</li><li>Row-level security</li><li>Fabric</li></ul></div>
+        <dl class="case-dl">
+          <div><dt>What it changed</dt><dd>One version of the truth for leadership, instead of separate packs.</dd></div>
+          <div><dt>My role</dt><dd>Designed, built and run it. Try a fictional version in the <a class="link" href="demo.html">live BI demo</a>.</dd></div>
+          <div class="ag"><dt>Now with agents</dt><dd>Report and model changes can be built with agent help and parity-checked figure by figure; I sign them off. A data agent that reads the model for leaders’ own questions is being added.</dd></div>
+        </dl>
+        <div class="case-act">
+          <a class="btn primary small" href="explore.html?stage=exec" data-stage="exec" aria-haspopup="dialog"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M2.5 1.5v7l6-3.5z" fill="currentColor"/></svg>Try it<span class="sr-only">: Executive scorecard</span></a>
+          <a class="link" href="explore.html?node=exec">See it on the platform map</a>
         </div>
-        <div class="proj-flow"><h4>How it works</h4><figure class="flowd" aria-label="How it works: Executive scorecard" style="--n:4"><div class="fd-vis" aria-hidden="true"><div class="fd-n" style="--i:0"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3.5 8 4.5-8 4.5-8-4.5z"/><path d="m4 12.5 8 4.5 8-4.5"/></svg></span><span class="fd-l">Governed model: actual, budget, latest estimate, prior year</span></div><i class="fd-arr"></i><div class="fd-n gate" style="--i:1"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg></span><span class="fd-l">Row-level security</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:2"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="12" rx="2"/><path d="M8 20h8M12 16.5V20M7.5 12.5l3-3 2.5 2 3.5-3.5"/></svg></span><span class="fd-l">Each leader sees their own figures</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:3"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5v3M12 17.5v3M3.5 12h3M17.5 12h3"/><path d="M12 8.5 13.2 11l2.3 1-2.3 1L12 15.5 10.8 13l-2.3-1 2.3-1z"/></svg></span><span class="fd-l">A data agent answers questions (being added)</span></div></div><figcaption class="sr-only"><ol><li>Governed model: actual, budget, latest estimate, prior year</li><li>Row-level security (a check)</li><li>Each leader sees their own figures</li><li>A data agent answers questions (being added)</li></ol></figcaption></figure></div>
+        <details class="case-more">
+          <summary>How it works, in full<span class="sr-only">: Executive scorecard</span></summary>
+          <div class="case-more-b">
+            <h4>What it is</h4>
+            <p>A governed view of actual, budget, latest estimate and prior-year performance for the C-suite, with each regional leader seeing their own figures. Now adding a natural-language data agent so leaders can ask their own questions.</p>
+            <div class="proj-flow"><h4>How it works</h4><figure class="flowd" aria-label="How it works: Executive scorecard" style="--n:3"><div class="fd-vis" aria-hidden="true"><div class="fd-n" style="--i:0"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3.5 8 4.5-8 4.5-8-4.5z"/><path d="m4 12.5 8 4.5 8-4.5"/></svg></span><span class="fd-l">Governed model: actual, budget, latest estimate, prior year</span></div><i class="fd-arr"></i><div class="fd-n gate" style="--i:1"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg></span><span class="fd-l">Row-level security</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:2"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="12" rx="2"/><path d="M8 20h8M12 16.5V20M7.5 12.5l3-3 2.5 2 3.5-3.5"/></svg></span><span class="fd-l">Each leader sees their own figures</span></div><div class="fd-rail beside" style="grid-column:1/2;--span:1"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5v3M12 17.5v3M3.5 12h3M17.5 12h3"/><path d="M12 8.5 13.2 11l2.3 1-2.3 1L12 15.5 10.8 13l-2.3-1 2.3-1z"/></svg></span><span>Beside it, not in it: a data agent (being added) reads the model to answer leaders’ own questions</span></div></div><figcaption class="sr-only"><ol><li>Governed model: actual, budget, latest estimate, prior year</li><li>Row-level security (a check)</li><li>Each leader sees their own figures</li></ol><p>Alongside: Beside it, not in it: a data agent (being added) reads the model to answer leaders’ own questions.</p></figcaption></figure></div>
+          </div>
+        </details>
       </article>
-      <article class="proj" id="order-tracking-app">
-        <div>
+      <article class="case" id="order-tracking-app" aria-labelledby="order-tracking-app-h">
+        <div class="case-top">
           <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3.5" width="14" height="17" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></span>
-          <h3 class="ptitle">Order-tracking app</h3>
-          <ul class="tags" aria-label="Stack"><li>Fabric SQL database</li><li>Web app</li></ul>
+          <h3 class="ptitle" id="order-tracking-app-h">Order-tracking app</h3>
         </div>
-        <div class="body">
-          <h4>What it is</h4>
-          <p>A SQL database and web app on Fabric to replace manual, spreadsheet-based order tracking: shared editing with an audit log, saved views and dashboards.</p>
-          <h4>What it changed</h4>
-          <p>One shared, audited record the operations team can work on together. Status: built; rolling out.</p>
-          <h4>My role</h4>
-          <p>Designed and built it.</p>
+        <div class="hands"><p class="lbl">Hands-on</p><p class="case-sum">I designed the SQL database and built the web app: shared editing with a version check, an audit log, saved views and dashboards.</p><ul class="tags" aria-label="Hands-on stack"><li>Fabric SQL database</li><li>SQL</li><li>Web app</li></ul></div>
+        <dl class="case-dl">
+          <div><dt>What it changed</dt><dd>One shared, audited record the operations team can work on together. Status: built; rolling out.</dd></div>
+          <div><dt>My role</dt><dd>Designed and built it.</dd></div>
+          <div class="ag"><dt>Now with agents</dt><dd>App changes can be built with agent help, through review, test and a release gate; database scripts are drafted with agent help and I run them.</dd></div>
+        </dl>
+        <div class="case-act">
+          <a class="btn primary small" href="explore.html?stage=apps" data-stage="apps" aria-haspopup="dialog"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M2.5 1.5v7l6-3.5z" fill="currentColor"/></svg>Try it<span class="sr-only">: Order-tracking app</span></a>
+          <a class="link" href="explore.html?node=apps">See it on the platform map</a>
         </div>
-        <div class="proj-flow"><h4>How it works</h4><figure class="flowd" aria-label="How it works: Order-tracking app" style="--n:5"><div class="fd-vis" aria-hidden="true"><div class="fd-n" style="--i:0"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="9" r="2.5"/><circle cx="16" cy="9" r="2.5"/><path d="M3.5 18.5c.4-2.6 2.2-4.3 4.5-4.3s4.1 1.7 4.5 4.3M11.5 18.5c.4-2.6 2.2-4.3 4.5-4.3s4.1 1.7 4.5 4.3"/></svg></span><span class="fd-l">The team edits together</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:1"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><path d="M3.5 9h17M7 6.8h.01M9.5 6.8h.01"/></svg></span><span class="fd-l">Web app</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:2"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="7" ry="2.5"/><path d="M5 6v12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V6"/><path d="M5 12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5"/></svg></span><span class="fd-l">SQL database</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:3"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h10l3 3v13H6z"/><path d="M9 11h7M9 15h5"/></svg></span><span class="fd-l">Audit log</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:4"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V4M4 20h16"/><path d="M8 16v-4M12 16V8M16 16v-6"/></svg></span><span class="fd-l">Saved views and dashboards</span></div></div><figcaption class="sr-only"><ol><li>The team edits together</li><li>Web app</li><li>SQL database</li><li>Audit log</li><li>Saved views and dashboards</li></ol></figcaption></figure></div>
+        <details class="case-more">
+          <summary>How it works, in full<span class="sr-only">: Order-tracking app</span></summary>
+          <div class="case-more-b">
+            <h4>What it is</h4>
+            <p>A SQL database and web app on Fabric to replace manual, spreadsheet-based order tracking: shared editing with an audit log, saved views and dashboards.</p>
+            <div class="proj-flow"><h4>How it works</h4><figure class="flowd" aria-label="How it works: Order-tracking app" style="--n:5"><div class="fd-vis" aria-hidden="true"><div class="fd-n" style="--i:0"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="9" r="2.5"/><circle cx="16" cy="9" r="2.5"/><path d="M3.5 18.5c.4-2.6 2.2-4.3 4.5-4.3s4.1 1.7 4.5 4.3M11.5 18.5c.4-2.6 2.2-4.3 4.5-4.3s4.1 1.7 4.5 4.3"/></svg></span><span class="fd-l">The team edits together</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:1"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><path d="M3.5 9h17M7 6.8h.01M9.5 6.8h.01"/></svg></span><span class="fd-l">Web app</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:2"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="7" ry="2.5"/><path d="M5 6v12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V6"/><path d="M5 12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5"/></svg></span><span class="fd-l">SQL database</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:3"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h10l3 3v13H6z"/><path d="M9 11h7M9 15h5"/></svg></span><span class="fd-l">Audit log</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:4"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V4M4 20h16"/><path d="M8 16v-4M12 16V8M16 16v-6"/></svg></span><span class="fd-l">Saved views and dashboards</span></div></div><figcaption class="sr-only"><ol><li>The team edits together</li><li>Web app</li><li>SQL database</li><li>Audit log</li><li>Saved views and dashboards</li></ol></figcaption></figure></div>
+          </div>
+        </details>
       </article>
-      <article class="proj" id="data-qa-desk">
-        <div>
+      <article class="case" id="data-qa-desk" aria-labelledby="data-qa-desk-h">
+        <div class="case-top">
           <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/><path d="M8.5 9.5h7M8.5 12.5h4"/></svg></span>
-          <h3 class="ptitle">Data Q&amp;A desk</h3>
-          <ul class="tags" aria-label="Stack"><li>AI agents</li><li>Read-only</li><li>Fabric</li></ul>
+          <h3 class="ptitle" id="data-qa-desk-h">Data Q&amp;A desk</h3>
         </div>
-        <div class="body">
-          <h4>What it is</h4>
-          <p>A read-only service that answers ad hoc data questions from the governed data using the business’s own definitions. Every answer is rechecked by a separate agent before it goes out, and arrives as a ready-to-send reply plus a spreadsheet with the data and notes.</p>
-          <h4>What it changed</h4>
-          <p>Fast, consistent answers without waiting for a new report.</p>
-          <h4>My role</h4>
-          <p>Designed and built it.</p>
+        <div class="hands"><p class="lbl">Hands-on</p><p class="case-sum">I designed and built a read-only service that answers ad hoc questions from the governed data, using the business’s own definitions, with an independent recheck before anything goes out.</p><ul class="tags" aria-label="Hands-on stack"><li>Fabric</li><li>SQL</li><li>Read-only access</li></ul></div>
+        <dl class="case-dl">
+          <div><dt>What it changed</dt><dd>Fast, consistent answers without waiting for a new report.</dd></div>
+          <div><dt>My role</dt><dd>Designed and built it.</dd></div>
+          <div class="ag"><dt>Now with agents</dt><dd>An answering agent and a separate verifier agent read the governed data, read-only. They never change it, and I send the reply.</dd></div>
+        </dl>
+        <div class="case-act">
+          <a class="btn primary small" href="explore.html?stage=qa" data-stage="qa" aria-haspopup="dialog"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M2.5 1.5v7l6-3.5z" fill="currentColor"/></svg>Try it<span class="sr-only">: Data Q&amp;A desk</span></a>
+          <a class="link" href="explore.html?node=qa">See it on the platform map</a>
         </div>
-        <div class="proj-flow"><h4>How it works</h4><figure class="flowd" aria-label="How it works: Data Q&amp;A desk" style="--n:5"><div class="fd-vis" aria-hidden="true"><div class="fd-n" style="--i:0"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M9.6 9.5a2.5 2.5 0 1 1 3.4 2.3c-.6.3-1 .8-1 1.5v.7M12 17h.01"/></svg></span><span class="fd-l">A question</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:1"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4.5h11a3 3 0 0 1 3 3v12H8a3 3 0 0 1-3-3z"/><path d="M5 16.5a3 3 0 0 1 3-3h11"/></svg></span><span class="fd-l">Governed data and business definitions</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:2"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 5.5h15v10h-8l-4.5 4v-4h-2.5z"/><path d="M8.5 10.5h7"/></svg></span><span class="fd-l">Answer</span></div><i class="fd-arr"></i><div class="fd-n gate" style="--i:3"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span><span class="fd-l">Independent recheck</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:4"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="16" rx="2"/><path d="M3.5 10h17M3.5 15h17M10 4v16"/></svg></span><span class="fd-l">Reply plus spreadsheet</span></div><div class="fd-rail watch" style="grid-column:1/6;--span:5"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg></span><span>Read-only throughout: it cannot change anything</span></div></div><figcaption class="sr-only"><ol><li>A question</li><li>Governed data and business definitions</li><li>Answer</li><li>Independent recheck (a check)</li><li>Reply plus spreadsheet</li></ol><p>Throughout: Read-only throughout: it cannot change anything.</p></figcaption></figure></div>
+        <details class="case-more">
+          <summary>How it works, in full<span class="sr-only">: Data Q&amp;A desk</span></summary>
+          <div class="case-more-b">
+            <h4>What it is</h4>
+            <p>A read-only service that answers ad hoc data questions from the governed data using the business’s own definitions. Every answer is rechecked by a separate agent before it goes out, and arrives as a ready-to-send reply plus a spreadsheet with the data and notes.</p>
+            <div class="proj-flow"><h4>How it works</h4><figure class="flowd" aria-label="How it works: Data Q&amp;A desk" style="--n:5"><div class="fd-vis" aria-hidden="true"><div class="fd-n" style="--i:0"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M9.6 9.5a2.5 2.5 0 1 1 3.4 2.3c-.6.3-1 .8-1 1.5v.7M12 17h.01"/></svg></span><span class="fd-l">A question</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:1"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4.5h11a3 3 0 0 1 3 3v12H8a3 3 0 0 1-3-3z"/><path d="M5 16.5a3 3 0 0 1 3-3h11"/></svg></span><span class="fd-l">Governed data and business definitions</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:2"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 5.5h15v10h-8l-4.5 4v-4h-2.5z"/><path d="M8.5 10.5h7"/></svg></span><span class="fd-l">Answer</span></div><i class="fd-arr"></i><div class="fd-n gate" style="--i:3"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span><span class="fd-l">Independent recheck</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:4"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="16" rx="2"/><path d="M3.5 10h17M3.5 15h17M10 4v16"/></svg></span><span class="fd-l">Reply plus spreadsheet</span></div><div class="fd-rail watch" style="grid-column:1/6;--span:5"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg></span><span>Read-only throughout: it cannot change anything</span></div></div><figcaption class="sr-only"><ol><li>A question</li><li>Governed data and business definitions</li><li>Answer</li><li>Independent recheck (a check)</li><li>Reply plus spreadsheet</li></ol><p>Throughout: Read-only throughout: it cannot change anything.</p></figcaption></figure></div>
+          </div>
+        </details>
       </article>
-      <article class="proj" id="workbook-rebuilds">
-        <div>
+      <article class="case" id="workbook-rebuilds" aria-labelledby="workbook-rebuilds-h">
+        <div class="case-top">
           <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="16" rx="2"/><path d="M3.5 10h17M3.5 15h17M10 4v16"/></svg></span>
-          <h3 class="ptitle">Workbook rebuilds</h3>
-          <ul class="tags" aria-label="Stack"><li>Excel</li><li>AI agents</li></ul>
+          <h3 class="ptitle" id="workbook-rebuilds-h">Workbook rebuilds</h3>
         </div>
-        <div class="body">
-          <h4>What it is</h4>
-          <p>Takes complex legacy Excel workbooks, works out what they really do, then redesigns, rebuilds and tests them as drop-in replacements.</p>
-          <h4>What it changed</h4>
-          <p>Fragile spreadsheets become tested, maintainable tools.</p>
-          <h4>My role</h4>
-          <p>Designed and built it.</p>
+        <div class="hands"><p class="lbl">Hands-on</p><p class="case-sum">I work out what a legacy workbook really does, then redesign it, rebuild it and test it as a drop-in replacement.</p><ul class="tags" aria-label="Hands-on stack"><li>Excel</li><li>Power Query</li></ul></div>
+        <dl class="case-dl">
+          <div><dt>What it changed</dt><dd>Fragile spreadsheets become tested, maintainable tools.</dd></div>
+          <div><dt>My role</dt><dd>Designed and built it.</dd></div>
+          <div class="ag"><dt>Now with agents</dt><dd>An agent can map the workbook, help rebuild it and run the parity test; I explain each difference and sign off the drop-in.</dd></div>
+        </dl>
+        <div class="case-act">
+          <a class="btn primary small" href="explore.html?stage=workbook" data-stage="workbook" aria-haspopup="dialog"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M2.5 1.5v7l6-3.5z" fill="currentColor"/></svg>Try it<span class="sr-only">: Workbook rebuilds</span></a>
+          <a class="link" href="explore.html?node=workbook">See it on the platform map</a>
         </div>
-        <div class="proj-flow"><h4>How it works</h4><figure class="flowd" aria-label="How it works: Workbook rebuilds" style="--n:6"><div class="fd-vis" aria-hidden="true"><div class="fd-n" style="--i:0"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="16" rx="2"/><path d="M3.5 10h17M3.5 15h17M10 4v16"/></svg></span><span class="fd-l">Legacy workbook</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:1"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 5 5"/></svg></span><span class="fd-l">Work out what it really does</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:2"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h8"/><path d="M16.5 4.5a2.1 2.1 0 0 1 3 3L8 19l-4 1 1-4z"/></svg></span><span class="fd-l">Redesign</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:3"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5a4 4 0 0 0 4.6 5.4L11 19a2.1 2.1 0 0 1-3-3l8.1-8.1a4 4 0 0 0-1.6-2.4z"/></svg></span><span class="fd-l">Rebuild</span></div><i class="fd-arr"></i><div class="fd-n gate" style="--i:4"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span><span class="fd-l">Test against the old one</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:5"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h13M13 4l4 4-4 4M20 16H7M11 12l-4 4 4 4"/></svg></span><span class="fd-l">Drop-in replacement</span></div></div><figcaption class="sr-only"><ol><li>Legacy workbook</li><li>Work out what it really does</li><li>Redesign</li><li>Rebuild</li><li>Test against the old one (a check)</li><li>Drop-in replacement</li></ol></figcaption></figure></div>
+        <details class="case-more">
+          <summary>How it works, in full<span class="sr-only">: Workbook rebuilds</span></summary>
+          <div class="case-more-b">
+            <h4>What it is</h4>
+            <p>Takes complex legacy Excel workbooks, works out what they really do, then redesigns, rebuilds and tests them as drop-in replacements.</p>
+            <div class="proj-flow"><h4>How it works</h4><figure class="flowd" aria-label="How it works: Workbook rebuilds" style="--n:6"><div class="fd-vis" aria-hidden="true"><div class="fd-n" style="--i:0"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="16" rx="2"/><path d="M3.5 10h17M3.5 15h17M10 4v16"/></svg></span><span class="fd-l">Legacy workbook</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:1"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 5 5"/></svg></span><span class="fd-l">Work out what it really does</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:2"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h8"/><path d="M16.5 4.5a2.1 2.1 0 0 1 3 3L8 19l-4 1 1-4z"/></svg></span><span class="fd-l">Redesign</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:3"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5a4 4 0 0 0 4.6 5.4L11 19a2.1 2.1 0 0 1-3-3l8.1-8.1a4 4 0 0 0-1.6-2.4z"/></svg></span><span class="fd-l">Rebuild</span></div><i class="fd-arr"></i><div class="fd-n gate" style="--i:4"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span><span class="fd-l">Test against the old one</span></div><i class="fd-arr"></i><div class="fd-n" style="--i:5"><span class="fd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h13M13 4l4 4-4 4M20 16H7M11 12l-4 4 4 4"/></svg></span><span class="fd-l">Drop-in replacement</span></div></div><figcaption class="sr-only"><ol><li>Legacy workbook</li><li>Work out what it really does</li><li>Redesign</li><li>Rebuild</li><li>Test against the old one (a check)</li><li>Drop-in replacement</li></ol></figcaption></figure></div>
+          </div>
+        </details>
       </article>
     </div>
   </section>
 
   <section class="wrap dash" aria-labelledby="own-h" id="own">
-    <div class="sec-head"><div><h2 id="own-h">In my own time</h2></div><p>Repos are private; code available on request. What they share: private by default; dry-run, log, undo, never delete; AI as a co-developer and, in places, a built-in agent.</p></div>
+    <div class="sec-head"><div><h2 id="own-h">In my own time</h2></div><p>What they share: private by default; dry-run, log, undo, never delete; AI as a co-developer and, in places, a built-in agent.</p></div>
     <div class="proj-list">
       <article class="proj" id="money-ledger">
         <div>
@@ -246,14 +314,56 @@ document.documentElement.setAttribute('data-theme',t)})();
       </ul>
     </div>
   </section>
+
+  <section class="wrap dash" aria-labelledby="code-h" id="code">
+    <div class="sec-head"><div><p class="kicker">Code</p><h2 id="code-h">The code behind them</h2></div><p>Repos are private for now; code available on request. Each card says what the code shows, so a private repo still tells you something.</p></div>
+      <ul class="repos">
+        <li class="repo" id="code-money-ledger">
+          <div class="repo-h"><h3>Money Ledger</h3><span class="pill"><i></i>Private</span></div>
+          <p>A local finance app: drop in bank CSV exports and get one de-duplicated ledger, with transfers, subscriptions and money leaks explained in plain English.</p>
+          <p class="demo-line"><b>What it demonstrates</b>Plain code for the deterministic work and AI only at judgement points, with validated outputs, a log of every guess and an offline test suite with a fake AI engine.</p>
+          <ul class="tags" aria-label="Stack"><li>Python</li><li>FastAPI</li><li>SQLite</li><li>Vanilla JS</li></ul>
+          <p class="repo-foot"><b>Status</b><span class="repo-st">Private for now · <a class="link" href="mailto:nyall_negm@hotmail.co.uk?subject=Code%20request:%20Money%20Ledger">code on request</a></span></p>
+        </li>
+        <li class="repo" id="code-lean-agent-toolkit">
+          <div class="repo-h"><h3>Lean agent toolkit</h3><span class="pill"><i></i>Private</span></div>
+          <p>A small Claude Code plugin with researcher, analyst, designer, builder, tester and reviewer roles, and build and maintain skills.</p>
+          <p class="demo-line"><b>What it demonstrates</b>Agent workflow design, and knowing when to cut: it replaced a much heavier first version that an independent audit called over-engineered.</p>
+          <ul class="tags" aria-label="Stack"><li>Claude Code</li><li>Plugin</li><li>Agents</li></ul>
+          <p class="repo-foot"><b>Status</b><span class="repo-st">Private for now · <a class="link" href="mailto:nyall_negm@hotmail.co.uk?subject=Code%20request:%20Lean%20agent%20toolkit">code on request</a></span></p>
+        </li>
+        <li class="repo" id="code-the-nook">
+          <div class="repo-h"><h3>The Nook</h3><span class="pill"><i></i>Private</span></div>
+          <p>A private, phone-first suite of single-file web apps for my household: a trip companion, workshop calculators, a parametric 3D part designer and game trackers.</p>
+          <p class="demo-line"><b>What it demonstrates</b>Small, dependable front ends with maps, 3D and sync between phones, each shipped as a single file.</p>
+          <ul class="tags" aria-label="Stack"><li>HTML/JS</li><li>React (CDN)</li><li>Three.js</li><li>Leaflet</li><li>Supabase</li><li>Cloudflare Pages</li></ul>
+          <p class="repo-foot"><b>Status</b><span class="repo-st">Private for now · <a class="link" href="mailto:nyall_negm@hotmail.co.uk?subject=Code%20request:%20The%20Nook">code on request</a></span></p>
+        </li>
+        <li class="repo" id="code-media-library-tools">
+          <div class="repo-h"><h3>Media library tools</h3><span class="pill"><i></i>Private</span></div>
+          <p>Measures every film and episode on a home media server and shows quality in a local page.</p>
+          <p class="demo-line"><b>What it demonstrates</b>Safe automation: dry run first, log everything, keep an undo, never delete.</p>
+          <ul class="tags" aria-label="Stack"><li>PowerShell</li><li>Python</li><li>ffprobe</li></ul>
+          <p class="repo-foot"><b>Status</b><span class="repo-st">Private for now · <a class="link" href="mailto:nyall_negm@hotmail.co.uk?subject=Code%20request:%20Media%20library%20tools">code on request</a></span></p>
+        </li>
+        <li class="repo" id="code-3d-models">
+          <div class="repo-h"><h3>3D models</h3><span class="pill"><i></i>Private</span></div>
+          <p>Parametric, versioned 3D-print designs, such as a monitor riser and a charger cover.</p>
+          <p class="demo-line"><b>What it demonstrates</b>Parametric design, with the same version control I use for code.</p>
+          <ul class="tags" aria-label="Stack"><li>FreeCAD</li><li>OpenSCAD</li><li>Blender</li></ul>
+          <p class="repo-foot"><b>Status</b><span class="repo-st">Private for now · <a class="link" href="mailto:nyall_negm@hotmail.co.uk?subject=Code%20request:%203D%20models">code on request</a></span></p>
+        </li>
+      </ul>
+  </section>
 </main>
 
 <footer id="contact">
   <div class="wrap">
     <div class="foot">
-      <div><h2>Get in touch</h2><p class="sub">Email is quickest. Repos are private; code available on request.</p></div>
+      <div><h2>Get in touch</h2><p class="sub">Email is quickest. My full CV is on request. Repos are private for now; code available on request.</p></div>
       <div class="links">
         <a class="btn primary" href="mailto:nyall_negm@hotmail.co.uk">nyall_negm@hotmail.co.uk</a>
+        <a class="btn secondary" href="mailto:nyall_negm@hotmail.co.uk?subject=CV%20request">Request my full CV</a>
         <a class="btn secondary" href="https://www.linkedin.com/in/nyall-negm/" rel="noopener">LinkedIn</a>
       </div>
     </div>

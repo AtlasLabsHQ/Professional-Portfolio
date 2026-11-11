@@ -53,6 +53,12 @@
 
     <h2 class="sr-only">Key figures</h2>
     <div class="kpi-grid" id="kpis"></div>
+    <section class="mdef" id="mdef" aria-labelledby="mdef-h" hidden></section>
+    <section class="whatif" aria-labelledby="wi-h">
+      <div class="wi-l"><h2 id="wi-h">What if the budget were different?</h2><p>Move the budget for this selection up or down and watch the revenue variance follow.</p>
+        <label class="lbl" for="wi">Budget change: <b id="wi-v">0%</b></label><input type="range" id="wi" min="-10" max="10" step="1" value="0" aria-describedby="wi-f"></div>
+      <div class="wi-r" aria-live="polite"><div class="wi-tile"><span>Revenue against the adjusted budget</span><b id="wi-out"></b><em id="wi-pct"></em></div><p class="wi-f" id="wi-f"></p></div>
+    </section>
 
     <div class="charts">
       <section class="cbox" aria-labelledby="trend-h">
@@ -96,7 +102,7 @@
     <section class="table-box" aria-labelledby="table-h">
       <div class="cbox-head">
         <div><h2 id="table-h">Drill-down: region to product line</h2><p>Select a region to open its product lines. Select a column heading to sort; sorting applies within each level.</p></div>
-        <div class="table-actions"><button class="btn secondary small" type="button" id="exp-all">Expand all</button></div>
+        <div class="table-actions"><button class="btn secondary small" type="button" id="exp-all">Expand all</button><button class="btn secondary small" type="button" id="csv">Export CSV</button></div>
       </div>
       <div class="tscroll" tabindex="0" role="region" aria-label="Drill-down table, scrolls sideways on small screens">
         <table class="dt">
@@ -108,7 +114,16 @@
       <p class="fine">Variances are against budget or prior year for the chosen period. ▲ and ▼ show direction; green is favourable and red is adverse, and the +/− sign always carries the meaning. Gross margin is revenue less cost of sales; EBITDA is gross margin less operating expenses. All figures are invented.</p>
     </section>`;
 
-  function mount(root) {
+  /* What each figure means. Invented, but the shape is the one I use: definition, grain, owner, refresh, caveat. */
+  const DEFS = {
+    rev: ['Revenue', 'Net sales after returns, with internal transfers left out.', 'Order line, by month, region and product line.', 'Finance (head of reporting role).', 'Through the day; a month closes on working day three.', 'The current month is open, so it can still move until close.'],
+    gm: ['Gross margin', 'Revenue less cost of sales.', 'Order line, by month, region and product line.', 'Finance (head of reporting role).', 'Through the day.', 'Cost of sales for an open month is an estimate until close.'],
+    opex: ['Operating expenses', 'Operating costs from the ledger, mapped to cost centres.', 'Ledger line by month and cost centre, allocated to region and product line.', 'Finance (management accounts role).', 'Daily.', 'Product-line allocations use a fixed key agreed each year.'],
+    ebitda: ['EBITDA', 'Gross margin less operating expenses.', 'Derived from the two measures above.', 'Finance (head of reporting role).', 'Follows its inputs.', 'One-off items are not adjusted out.']
+  };
+
+  function mount(root, opts) {
+    opts = opts || {};
     root.innerHTML = TEMPLATE;
     /* ======================= 3. STATE ======================= */
     const DEFAULTS = function () {
@@ -142,22 +157,64 @@
       return '<div class="var ' + v.cls + '"><span class="num"><i aria-hidden="true">' + v.arrow + '</i>' +
         smoney(v.d) + ' (' + pct(v.p) + ')</span><span>' + words(v, basis, higherIsGood) + '</span></div>';
     }
-    function card(title, a, b, p, sub, higherIsGood) {
-      return '<div class="kpi"><h3>' + title + '</h3><div class="val">' + money(a) + '</div><div class="sub">' + sub + '</div>' +
+    const INFO = '<svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="8" cy="8" r="6.5"/><path d="M8 7.2v4M8 4.9v.1" stroke-linecap="round"/></svg>';
+    const TRACE = '<svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="3.5" cy="12.5" r="1.8"/><circle cx="12.5" cy="3.5" r="1.8"/><path d="M5 11 11 5"/></svg>';
+    function card(title, a, b, p, sub, higherIsGood, key) {
+      const tools = '<span class="kt"><button type="button" class="kbtn" data-def="' + key + '" aria-expanded="' + (openDef === key) + '" aria-controls="mdef" aria-label="What ' + title + ' means">' + INFO + '</button>' +
+        (opts.trace ? '<button type="button" class="kbtn tr" data-trace="' + key + '" aria-label="Trace: where does this ' + title + ' figure come from?">' + TRACE + '<span>Trace</span></button>' : '') + '</span>';
+      return '<div class="kpi"><div class="kh"><h3>' + title + '</h3>' + tools + '</div><div class="val">' + money(a) + '</div><div class="sub">' + sub + '</div>' +
         '<div class="cmp">' + varLine(variance(a, b, higherIsGood), 'budget', higherIsGood) +
         varLine(variance(a, p, higherIsGood), 'prior year', higherIsGood) + '</div></div>';
     }
     function renderKpis(s) {
       const A = s.a;
       $('kpis').innerHTML =
-        card('Revenue', A.rev, s.b.rev, s.p.rev, periodLabel(), true) +
-        card('Gross margin', A.gm, s.b.gm, s.p.gm, ratio(A.gm, A.rev).toFixed(1) + '% of revenue (' + pct(ratio(A.gm, A.rev) - ratio(s.b.gm, s.b.rev), 1).replace('%', '') + ' pts vs budget)', true) +
-        card('Operating expenses', A.opex, s.b.opex, s.p.opex, ratio(A.opex, A.rev).toFixed(1) + '% of revenue', false) +
-        card('EBITDA', A.ebitda, s.b.ebitda, s.p.ebitda, ratio(A.ebitda, A.rev).toFixed(1) + '% margin (' + pct(ratio(A.ebitda, A.rev) - ratio(s.b.ebitda, s.b.rev), 1).replace('%', '') + ' pts vs budget)', true);
+        card('Revenue', A.rev, s.b.rev, s.p.rev, periodLabel(), true, 'rev') +
+        card('Gross margin', A.gm, s.b.gm, s.p.gm, ratio(A.gm, A.rev).toFixed(1) + '% of revenue (' + pct(ratio(A.gm, A.rev) - ratio(s.b.gm, s.b.rev), 1).replace('%', '') + ' pts vs budget)', true, 'gm') +
+        card('Operating expenses', A.opex, s.b.opex, s.p.opex, ratio(A.opex, A.rev).toFixed(1) + '% of revenue', false, 'opex') +
+        card('EBITDA', A.ebitda, s.b.ebitda, s.p.ebitda, ratio(A.ebitda, A.rev).toFixed(1) + '% margin (' + pct(ratio(A.ebitda, A.rev) - ratio(s.b.ebitda, s.b.rev), 1).replace('%', '') + ' pts vs budget)', true, 'ebitda');
       const vr = variance(A.rev, s.b.rev, true), ve = variance(A.ebitda, s.b.ebitda, true);
       $('status').textContent = regionName() + ', ' + productName() + ', ' + periodLabel() + '. Revenue ' + money(A.rev) + ', ' +
         pct(vr.p).slice(1) + ' ' + words(vr, 'budget', true) + '. EBITDA ' + money(A.ebitda) + ', ' + pct(ve.p).slice(1) + ' ' + words(ve, 'budget', true) + '.';
       $('scope').innerHTML = '<strong>' + esc(regionName()) + '</strong> · <strong>' + esc(productName()) + '</strong> · <strong>' + esc(periodLabel()) + '</strong>';
+    }
+
+    /* metric definitions: one drawer under the cards, opened by the info button on each card */
+    let openDef = null;
+    function drawDef() {
+      const m = $('mdef');
+      if (!openDef) { m.hidden = true; m.innerHTML = ''; return; }
+      const d = DEFS[openDef];
+      m.hidden = false;
+      m.innerHTML = '<div class="mdef-h"><h3 id="mdef-h">' + d[0] + ': what it means</h3><button type="button" class="btn ghost small" id="mdef-x">Close</button></div><dl>' +
+        ['Definition', 'Grain', 'Owner', 'Refresh', 'Caveat'].map(function (t, i) { return '<div><dt>' + t + '</dt><dd>' + esc(d[i + 1]) + '</dd></div>'; }).join('') + '</dl><p class="fine">Invented for the demo, in the shape I use for real metric definitions.</p>';
+      $('mdef-x').addEventListener('click', function () { const k = openDef; openDef = null; renderKpis(cur); drawDef(); const b = root.querySelector('[data-def="' + k + '"]'); if (b) b.focus(); });
+    }
+    /* one what-if: change the budget for this selection and recompute the revenue variance, formula shown */
+    function drawWhatIf() {
+      const p = +$('wi').value, A = cur.a.rev, B = cur.b.rev * (1 + p / 100), d = A - B;
+      $('wi-v').textContent = (p > 0 ? '+' : p < 0 ? '−' : '') + Math.abs(p) + '%';
+      $('wi-out').textContent = smoney(d); $('wi-out').className = d >= 0 ? 'good' : 'bad';
+      $('wi-pct').textContent = pct(ratio(d, B)).replace(/^[+−]/, '') + ' ' + (d >= 0 ? 'above' : 'below') + ' the adjusted budget';
+      $('wi-f').innerHTML = '<span>Variance = Actual − Budget × (1 ' + (p < 0 ? '−' : '+') + ' ' + Math.abs(p) + '%)</span><span>= ' + money(A) + ' − ' + money(B) + '</span><span>= <b>' + smoney(d) + '</b></span>';
+    }
+    /* the drill-down table as CSV: what is on screen, raw figures in £k, invented data */
+    function csv() {
+      const months = selMonths(), prods = selProducts(), lines = [['Level', 'Region', 'Product line'].concat(COLS.slice(1).map(function (c) { return c.label.replace('£', '(£k)'); }))];
+      const row = function (lvl, reg, prod, r) { return [lvl, reg, prod, r.rev, r.vb, r.vbp.toFixed(1), r.vp.toFixed(1), r.gmp.toFixed(1), r.ebitda, r.ebv]; };
+      REGIONS.filter(function (r) { return selRegions().indexOf(r.id) >= 0; }).forEach(function (r) {
+        lines.push(row('Region', r.name, 'All', stats(r.name, r.id, [r.id], prods, months)));
+        if (S.expanded[r.id]) PRODUCTS.filter(function (p) { return prods.indexOf(p.id) >= 0; }).forEach(function (p) { lines.push(row('Product line', r.name, p.name, stats(p.name, p.id, [r.id], [p.id], months))); });
+      });
+      lines.push(row('Total', 'Selection', 'All', stats('Total', 'tot', selRegions(), prods, months)));
+      return lines.map(function (l) { return l.map(function (v) { v = String(v); return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }).join(','); }).join('\r\n') + '\r\n';
+    }
+    function download() {
+      const blob = new Blob(['﻿' + csv()], { type: 'text/csv;charset=utf-8' }), a = document.createElement('a');
+      a.href = URL.createObjectURL(blob); a.download = 'harbour-and-pine-drilldown-invented.csv';
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function () { URL.revokeObjectURL(a.href); }, 4000);
+      $('status').textContent = 'Exported the table as a CSV file. Invented data.';
     }
 
     /* ======================= 5. TREND CHART ======================= */
@@ -378,9 +435,17 @@
     }
 
     /* ======================= 8. WIRING ======================= */
+    let cur = null;
     function renderAll() {
-      renderKpis(aggregate(selRegions(), selProducts(), selMonths()));
+      cur = aggregate(selRegions(), selProducts(), selMonths());
+      renderKpis(cur); drawDef(); drawWhatIf();
       drawTrend(); drawBridge(); drawTable();
+      if (opts.change) opts.change();
+    }
+    function scope() {
+      const label = regionName() + ', ' + productName().replace('All product lines', 'all product lines') + ', ' + periodLabel();
+      return { regions: selRegions(), products: selProducts(), months: selMonths(), label: label,
+        who: S.region === 'all' ? 'C-suite role: every region' : regionName() + ' leader’s role: ' + regionName() + ' rows only' };
     }
     function readControls() {
       const val = function (name) { const c = document.querySelector('input[name="' + name + '"]:checked'); return c ? c.value : null; };
@@ -401,7 +466,14 @@
       $('asat').innerHTML = o;
       setControls();
 
-      root.addEventListener('change', function (e) { if (!e.target.matches('input, select')) return; S.active = -1; readControls(); renderAll(); }); /* radios for measure and basis sit outside the filter form, so listen on the root */
+      root.addEventListener('change', function (e) { if (!e.target.matches('input, select') || e.target.id === 'wi') return; S.active = -1; readControls(); renderAll(); });
+      $('wi').addEventListener('input', drawWhatIf);
+      $('csv').addEventListener('click', download);
+      $('kpis').addEventListener('click', function (e) {
+        const d = e.target.closest('[data-def]'), t = e.target.closest('[data-trace]');
+        if (d) { const k = d.getAttribute('data-def'); openDef = openDef === k ? null : k; renderKpis(cur); drawDef(); const b = root.querySelector('[data-def="' + k + '"]'); if (b) b.focus(); }
+        else if (t && opts.trace) opts.trace(t.getAttribute('data-trace'), t);
+      }); /* radios for measure and basis sit outside the filter form, so listen on the root */
       $('reset').addEventListener('click', function () { S = DEFAULTS(); setControls(); renderAll(); });
 
       /* trend interaction: pointer + keyboard (arrow keys, Home, End, Escape) */
@@ -451,7 +523,7 @@
     }
 
     init();
-    return { destroy: function () { if (ro) ro.disconnect(); root.innerHTML = ''; } };
+    return { destroy: function () { if (ro) ro.disconnect(); root.innerHTML = ''; }, scope: scope, csv: csv };
   }
 
   window.HPDemo = { mount: mount };

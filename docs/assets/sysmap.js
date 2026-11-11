@@ -22,7 +22,8 @@
     tester: { kind: 'box', lines: ['Tester'], sub: 'as a user would' },
     'g-parity': { kind: 'gate', lines: ['Parity', 'check'], flat: 'Parity check' },
     'g-signoff': { kind: 'gate', lines: ['Human', 'sign-off'], flat: 'Human sign-off' },
-    release: { kind: 'box', lines: ['Release', 'manager'], flat: 'Release manager', sub: 'dry-run first' }
+    release: { kind: 'box', lines: ['Release', 'manager'], flat: 'Release manager', sub: 'dry-run first' },
+    subs: { kind: 'box', lines: ['Sub-agents'], sub: 'one slice each', cls: 'subs' }
   };
 
   const CARDS = {
@@ -36,11 +37,14 @@
     tester: { t: 'Tester', does: 'Uses the result the way a user would and records pass or fail with evidence.', may: 'Run it and make clearly marked test changes, then remove them.', not: 'Change the build, or test against live.' },
     'g-parity': { t: 'Gate: parity check', does: 'Before and after every change to a report or model, the key figures are compared value by value against a baseline.', may: 'Let the change through when every figure that should not move has not moved.', not: 'Ship a change where a number moved that should not have. It goes back to the builder.' },
     'g-signoff': { t: 'Gate: human sign-off', does: 'The point where I decide, for this specific change.', may: 'Approve or refuse, with the evidence in front of me.', not: 'Be skipped, or stand in for a later change.' },
+    subs: { t: 'Sub-agents', does: 'Short-lived workers a specialist starts for one slice: one page, one measure, one check. They report back up and are gone.', may: 'Work on that one slice and report back to the specialist that started them.', not: 'Approve anything, talk to me, or touch anything outside their slice.' },
     release: { t: 'Release manager', does: 'Plans the release, rehearses it as a dry run, releases, then verifies.', may: 'Release only on my explicit go for that change, then check the result.', not: 'Release without that go, or skip the dry run.' }
   };
 
   const STAGES = [
     { node: 'builder', title: 'Build', text: 'The builder makes the change in its own slice, after a proposal with backup and rollback.' },
+    { node: 'subs', title: 'Down to sub-agents', text: 'The builder hands pieces of its slice to short-lived sub-agents: one page or one check each.' },
+    { node: 'builder', title: 'Results back up', text: 'The sub-agents report back and are gone; the builder assembles the pieces.' },
     { node: 'reviewer', title: 'Review', text: 'An independent reviewer, which did not write it, checks it.' },
     { node: 'tester', title: 'Test', text: 'The tester uses it the way a user would and records the result.' },
     { node: 'g-parity', title: 'Parity check', text: 'Key figures are compared value by value against the baseline.' },
@@ -51,8 +55,8 @@
   function sequence(fail) {
     const out = STAGES.map(function (s) { return Object.assign({}, s); });
     if (!fail) return out;
-    const seq = out.slice(0, 4);
-    seq[3] = Object.assign({}, seq[3], { fail: true, text: 'A figure moved that should not have. The change does not ship.' });
+    const pi = out.map(function (s) { return s.node; }).indexOf('g-parity'), seq = out.slice(0, pi + 1);
+    seq[pi] = Object.assign({}, seq[pi], { fail: true, text: 'A figure moved that should not have. The change does not ship.' });
     seq.push({ node: 'builder', title: 'Back to the builder', text: 'The builder fixes it, then it goes through review, test and the parity check again.', back: true });
     STAGES.forEach(function (s) { seq.push(Object.assign({}, s, { title: s.title + ' (again)' })); });
     return seq;
@@ -62,13 +66,14 @@
   function size(n) { return n.kind === 'gate' ? { hw: 24, hh: 24 } : { hw: 52, hh: 29 }; }
 
   function desktopLayout() {
-    const W = 1000, H = 372, rowA = 58, rowB = 280, pad = 12;
+    const W = 1000, H = 412, rowA = 58, rowB = 280, pad = 12;
     const order = ['analyst', 'g-proposal', 'builder', 'reviewer', 'tester', 'g-parity', 'g-signoff', 'release'];
     const total = order.reduce(function (s, id) { return s + size(NODES[id]).hw * 2; }, 0);
     const gap = (W - pad * 2 - total) / (order.length - 1);
     const pos = {}; let x = pad;
     order.forEach(function (id) { const hw = size(NODES[id]).hw; pos[id] = { x: x + hw, y: rowB }; x += hw * 2 + gap; });
     pos.overseer = { x: W / 2, y: rowA }; pos.control = { x: 130, y: rowA }; pos.me = { x: pos['g-signoff'].x, y: rowA };
+    pos.subs = { x: pos.reviewer.x, y: 378 };
     const paths = [];
     for (let i = 0; i < order.length - 1; i++) {
       const a = pos[order[i]], b = pos[order[i + 1]];
@@ -80,6 +85,8 @@
     paths.push({ d: 'M' + (pos.me.x - 55) + ' ' + rowA + 'H' + (pos.overseer.x + 55), cls: 'flow', arrow: true });
     paths.push({ d: 'M' + pos.me.x + ' ' + (rowA + 31) + 'V' + (rowB - 27), cls: 'flow', arrow: true });
     paths.push({ d: 'M' + (pos.control.x + 55) + ' ' + rowA + 'H' + (pos.overseer.x - 55), cls: 'watch', arrow: true });
+    /* sub-agents hang under the specialists: one short-lived worker per slice */
+    paths.push({ d: 'M' + pos.builder.x + ' ' + (rowB + 31) + 'V330H' + pos.tester.x + 'V' + (rowB + 31) + 'M' + pos.subs.x + ' 330V' + (pos.subs.y - 31), cls: 'bus' });
     const fx = pos['g-parity'].x, bx = pos.builder.x + 24;
     paths.push({ d: 'M' + fx + ' ' + (rowB - 27) + 'V212H' + bx + 'V' + (rowB - 31), cls: 'failpath', arrow: true, fail: true });
     const texts = [
@@ -97,7 +104,7 @@
     const ys = { me: 40, overseer: 118, analyst: 212, 'g-proposal': 290, builder: 368, reviewer: 452, tester: 536, 'g-parity': 614, 'g-signoff': 690, release: 780 };
     const pos = {};
     Object.keys(ys).forEach(function (id) { pos[id] = { x: sx, y: ys[id] }; });
-    pos.control = { x: 62, y: 118 };
+    pos.control = { x: 62, y: 118 }; pos.subs = { x: 62, y: 452 };
     const seq = ['me', 'overseer', 'analyst', 'g-proposal', 'builder', 'reviewer', 'tester', 'g-parity', 'g-signoff', 'release'];
     const hh = function (id) { return NODES[id].kind === 'gate' ? 24 : 27; };
     const paths = [];
@@ -106,6 +113,7 @@
       paths.push({ d: 'M' + sx + ' ' + (pos[a].y + hh(a) + 2) + 'V' + (pos[b].y - hh(b) - 3), cls: i < 2 ? (i === 0 ? 'flow' : 'bus') : 'flow', arrow: true });
     }
     paths.push({ d: 'M' + (62 + 52) + ' 118H' + (sx - 77), cls: 'watch', arrow: true });
+    paths.push({ d: 'M62 423V368H' + (sx - 79) + 'M62 481V536H' + (sx - 79) + 'M114 452H' + (sx - 79), cls: 'bus' });
     paths.push({ d: 'M' + (sx + 77) + ' 40H352V690H' + (sx + 27), cls: 'flow', arrow: true });
     paths.push({ d: 'M' + (sx + 27) + ' 614H322V368H' + (sx + 77), cls: 'failpath', arrow: true, fail: true });
     const texts = [{ x: 345, y: 520, t: 'approves', cls: 'vnote', rot: true }, { x: 316, y: 480, t: 'fails: back to builder', cls: 'failtext vnote', fail: true, rot: true }];
@@ -161,7 +169,7 @@
         lines.forEach(function (ln, i) { el('text', { x: p.x, y: p.y + 44 + i * 14, 'text-anchor': 'middle', 'class': (n.sub && i) ? 'sub' : 'lbl' }, g).textContent = ln; });
       }
     } else {
-      const hw = vertical && id !== 'control' ? 77 : (id === 'control' || id === 'overseer' || id === 'me' ? 55 : 52), hh = vertical ? 27 : 29;
+      const hw = vertical && id !== 'control' && id !== 'subs' ? 77 : (id === 'control' || id === 'overseer' || id === 'me' ? 55 : 52), hh = vertical ? 27 : 29;
       el('rect', { x: p.x - hw, y: p.y - hh, width: hw * 2, height: hh * 2, rx: 12, 'class': 'shape' }, g);
       const lines = vertical ? [n.flat || n.lines.join(' ')] : n.lines;
       const block = lines.length * 15 + (n.sub ? 14 : 0);
