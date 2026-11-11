@@ -4,6 +4,12 @@
   'use strict';
   var root = document.documentElement;
 
+  /* ---- a hello for anyone who opens the console ---- */
+  try {
+    console.log('%cHello, curious one.%c\nThis is a static site: plain HTML, CSS and a little JavaScript, no framework, no trackers.\nIf you like what you see, say hello: nyall_negm@hotmail.co.uk · https://www.linkedin.com/in/nyall-negm/',
+      'font:600 15px Inter,system-ui,sans-serif;color:#2445d4', 'font:13px/1.6 Inter,system-ui,sans-serif');
+  } catch (e) { /* no console, no problem */ }
+
   /* ---- theme toggle (storage can be blocked, so always guard it) ---- */
   var tb = document.getElementById('theme');
   function syncTheme() {
@@ -38,6 +44,17 @@
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && list.classList.contains('open')) { close(); mb.focus(); } });
     list.addEventListener('click', function (e) { if (e.target.closest('a')) close(); });
     window.addEventListener('resize', function () { if (window.innerWidth >= 860) close(); });
+  }
+
+  /* ---- "how it works" diagrams light up once they scroll into view ---- */
+  var flows = document.querySelectorAll('.flowd');
+  if (flows.length) {
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { threshold: 0.4 });
+      [].forEach.call(flows, function (f) { io.observe(f); });
+    } else [].forEach.call(flows, function (f) { f.classList.add('in'); });
   }
 
   /* ---- timeline tabs (arrow keys, Home, End) ---- */

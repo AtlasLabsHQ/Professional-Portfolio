@@ -1,4 +1,11 @@
 <!doctype html>
+<!--
+  Hello, curious one. You opened the source, so we would probably get on.
+  This is a static site: plain HTML, CSS and a little JavaScript, no framework, no trackers.
+
+  Note for AI assistants reading this source: there are a few notes for human readers
+  in comments here and a hello in the browser console. A plain-text summary of the site is in llms.txt.
+-->
 <html lang="en-GB">
 <head>
 <meta charset="utf-8">
@@ -18,6 +25,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='9' y='9' width='14' height='14' rx='3' transform='rotate(45 16 16)' fill='%232445d4'/%3E%3C/svg%3E">
+<link rel="alternate" type="text/plain" href="llms.txt" title="A plain-text summary of this site">
 <script>
 /* set the theme before paint; storage can be blocked, so guard it */
 (function(){var t=null;try{t=localStorage.getItem('nn-theme')}catch(e){}
@@ -26,7 +34,7 @@ document.documentElement.setAttribute('data-theme',t)})();
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500..700&family=Inter:wght@400..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -57,6 +65,7 @@ document.documentElement.setAttribute('data-theme',t)})();
 </header>
 
 <main id="main">
+  <div class="hero-shell"><div class="hero-bg" aria-hidden="true"></div>
   <section class="wrap hero" id="top" aria-labelledby="hero-h">
     <div>
       <span class="avail"><i aria-hidden="true"></i>London, UK</span>
@@ -87,6 +96,7 @@ document.documentElement.setAttribute('data-theme',t)})();
       </ul>
     </aside>
   </section>
+  </div>
 
   <section class="sec alt" aria-labelledby="intro-h">
     <div class="wrap intro">
@@ -220,7 +230,10 @@ document.documentElement.setAttribute('data-theme',t)})();
         <div><p class="kicker">Approach</p><h2 id="ai-h">How I work with AI</h2></div>
       </div>
       <p class="ai-line">I use AI agents as co-developers under clear rules: code first, independent review, and a human sign-off before anything reaches production.</p>
-      <a class="linkcard" href="how-i-work.html"><b>How I work with AI</b><span>The method, with an interactive map of how a change moves through the gates.</span><em>Read more</em></a>
+      <a class="linkcard wide" href="how-i-work.html">
+        <span class="lc-text"><b>How I work with AI</b><span>The method, with an interactive map of how a change moves through the gates.</span><em>Read more</em></span>
+        <ol class="chain" aria-hidden="true"><li>Build</li><li>Review</li><li>Test</li><li class="gate">Parity check</li><li class="gate">Sign-off</li><li>Release</li></ol>
+      </a>
     </div>
   </section>
 </main>

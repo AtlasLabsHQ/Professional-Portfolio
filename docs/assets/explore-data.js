@@ -47,6 +47,16 @@
     { node: 'csuite', text: 'A leader reads it, and sees only the figures they are meant to.' }
   ];
 
-  const DATA = { LAYERS: LAYERS, LANE: LANE, NODES: NODES, FOLLOW: FOLLOW };
+  /* How data moves between the boxes: [from, to, style]. style 'runs' or 'watches' draws a dashed line. */
+  const EDGES = [
+    ['src-dw', 'raw'], ['src-cube', 'raw'], ['src-sp', 'raw'], ['src-files', 'raw'],
+    ['raw', 'cleaned'], ['cleaned', 'ready'], ['orch', 'ready', 'runs'],
+    ['ready', 'models'], ['ready', 'sqldb'], ['ready', 'agents'],
+    ['models', 'exec'], ['agents', 'qa'], ['sqldb', 'apps'], ['sqldb', 'auto'],
+    ['exec', 'csuite'], ['exec', 'leaders'], ['exec', 'clients'], ['qa', 'leaders'], ['apps', 'ops'], ['auto', 'ops'],
+    ['control', 'suite', 'watches']
+  ];
+
+  const DATA = { LAYERS: LAYERS, LANE: LANE, NODES: NODES, FOLLOW: FOLLOW, EDGES: EDGES };
   if (typeof module !== 'undefined' && module.exports) module.exports = DATA; else window.EXPLORE = DATA;
 })();

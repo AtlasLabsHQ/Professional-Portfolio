@@ -1,6 +1,6 @@
 /* Harbour & Pine Outdoor Co.: executive P&L demo.
    Every number here is INVENTED. Data is generated from a fixed seed, so it is identical on every load.
-   Hand-rolled SVG, no libraries. Sections: 1 data, 2 maths and formatting, 3 state, 4 KPI cards,
+   Plain SVG, no libraries. Sections: 1 data, 2 maths and formatting, 3 state, 4 KPI cards,
    5 trend chart, 6 variance bridge, 7 drill-down table, 8 wiring. */
 (function () {
   'use strict';

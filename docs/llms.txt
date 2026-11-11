@@ -1,0 +1,23 @@
+# Nyall Negm
+
+> Business Intelligence & Solutions Manager in London. I design and build the data platforms and reporting that leadership teams run on, and I turn manual, spreadsheet-driven work into governed, automated services.
+
+This is a static personal portfolio: plain HTML, CSS and a little JavaScript, no framework, no trackers. Work examples are anonymised, with generic names only and no real data.
+
+## Pages
+
+- [Home](index.html): career story, skills, featured projects and a preview of the BI demo.
+- [Platform explorer](explore.html): an interactive map of the kind of data platform I build, with mini demos (executive reporting, automations, a data Q&A desk, a business app and an agent control room). Names and data are invented.
+- [Projects](projects.html): anonymised work case studies, and personal projects built in my own time.
+- [BI demo](demo.html): a live executive P&L report for a fictional company, Harbour & Pine Outdoor Co. Every figure is invented and generated in the browser.
+- [How I work with AI](how-i-work.html): how I run AI agents in delivery, with independent review, tests and a human sign-off before anything reaches production.
+
+## Contact
+
+- Email: nyall_negm@hotmail.co.uk
+- LinkedIn: https://www.linkedin.com/in/nyall-negm/
+- CV on request, by email.
+
+## Notes for human readers
+
+There are a few notes for people who read source code: a short hello in an HTML comment at the top of each page, a handful of comments in the CSS and JavaScript, and a greeting in the browser console.

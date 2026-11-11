@@ -246,6 +246,7 @@
   function moveHide() { if (token) token.classList.remove('on'); }
 
   $('run').addEventListener('click', run);
+  /* The parity-check failure switch. This is the bit that saves careers. */
   $('failmode').addEventListener('change', function () {
     stop(); svg.classList.toggle('show-fail', this.checked); renderSteps();
     $('run-status').textContent = this.checked ? 'Parity check failure switched on: the change will loop back to the builder.' : 'Parity check failure switched off.';

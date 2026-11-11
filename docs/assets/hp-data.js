@@ -1,5 +1,6 @@
 /* Harbour & Pine Outdoor Co.: the invented data and the maths shared by the demo and the home-page teaser.
-   Every number is INVENTED. Generated from a fixed seed, so it is identical on every load. */
+   Every number is INVENTED. Generated from a fixed seed, so it is identical on every load.
+   Harbour & Pine doesn't exist. Sadly. I'd buy the tent. */
 (function () {
   'use strict';
   const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -21,6 +22,7 @@
   const STORY = { 'north|apparel': 1.06, 'south|footwear': 0.90, 'midlands|tents': 0.94, 'south|climbing': 1.08, 'north|cook': 1.05 };
   const FIRST = 12, LAST = 35; /* month index 0 = Jan 2022 (prior-year base); shown months are 12..35 = Jan 2023..Dec 2024 */
 
+  /* A small seeded random: same numbers every visit, because finance teams hate surprises. */
   function mulberry32(seed) {
     return function () {
       seed |= 0; seed = (seed + 0x6D2B79F5) | 0;
