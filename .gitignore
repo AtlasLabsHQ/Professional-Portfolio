@@ -1,0 +1,4 @@
+_screens/
+*.tmp
+.DS_Store
+Thumbs.db

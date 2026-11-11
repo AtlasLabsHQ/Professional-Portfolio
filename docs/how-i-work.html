@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How I work with AI · Nyall Negm</title>
+<meta name="description" content="How Nyall Negm runs AI agents in delivery: an overseer and specialists, state documents, gates, parity checks and independent review. With an interactive system map.">
+<link rel="canonical" href="https://atlaslabshq.github.io/portfolio/how-i-work.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nyall Negm">
+<meta property="og:title" content="How I work with AI · Nyall Negm">
+<meta property="og:description" content="How Nyall Negm runs AI agents in delivery: an overseer and specialists, state documents, gates, parity checks and independent review. With an interactive system map.">
+<meta property="og:url" content="https://atlaslabshq.github.io/portfolio/how-i-work.html">
+<meta property="og:image" content="https://atlaslabshq.github.io/portfolio/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Nyall Negm, Business Intelligence and Solutions Manager">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='9' y='9' width='14' height='14' rx='3' transform='rotate(45 16 16)' fill='%232445d4'/%3E%3C/svg%3E">
+<script>
+/* set the theme before paint; storage can be blocked, so guard it */
+(function(){var t=null;try{t=localStorage.getItem('nn-theme')}catch(e){}
+if(t!=='light'&&t!=='dark'){t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}
+document.documentElement.setAttribute('data-theme',t)})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top" id="top-bar">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Nyall Negm, home"><i aria-hidden="true"></i>Nyall Negm</a>
+    <nav class="nav" aria-label="Primary">
+      <ul id="nav-list">
+        <li><a href="index.html#career">Career</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="demo.html">BI demo</a></li>
+        <li><a href="how-i-work.html" aria-current="page">How I work</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="theme" id="theme" type="button" aria-pressed="false" aria-label="Dark mode">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+        <span>Dark mode</span>
+      </button>
+      <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="nav-list">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menu
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="wrap page-head" aria-labelledby="page-h">
+    <p class="kicker">Approach</p>
+    <h1 id="page-h">How I work with AI</h1>
+    <p class="lede">At work I designed and built an agentic delivery system for a BI team. This page describes the method, not the work it was used on: how AI agents are given jobs, checked and stopped, so that one team can run many projects with a human still in charge.</p>
+    <p class="note-bar">Two terms you will see: <strong>overseer</strong> (a lead agent that runs the project) and <strong>parity check</strong> (the numbers before and after a change must match).</p>
+  </section>
+
+  <section class="sec alt" aria-labelledby="pr-h">
+    <div class="wrap">
+      <div class="sec-head"><div><h2 id="pr-h">Four principles</h2></div><p>Short on purpose.</p></div>
+      <ol class="principles four">
+        <li><h3>Code first, AI at judgement points</h3><p>Plain code for anything deterministic. AI only where a judgement is needed, with its output validated.</p></li>
+        <li><h3>Review before production</h3><p>Independent review, tests and a human sign-off before anything reaches production.</p></li>
+        <li><h3>Small and boring wins</h3><p>Small, boring systems beat clever ones. The story further down is how I learned it.</p></li>
+        <li><h3>Log what the AI decided</h3><p>Measure and log what the AI decided so a person can check it.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec" id="map" aria-labelledby="map-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="kicker">System map</p><h2 id="map-h">How a change moves</h2></div>
+        <p>Select any box to see what it may and may not do. Then run a change through the gates.</p>
+      </div>
+      <div class="mapbox">
+        <div class="map-controls">
+          <button class="btn primary small" type="button" id="run">Run a change</button>
+          <label class="switch"><input type="checkbox" id="failmode"><span class="tr" aria-hidden="true"></span>What if the parity check fails?</label>
+        </div>
+        <p class="run-status" id="run-status" role="status" aria-live="polite">Select a box for its card, or run a change.</p>
+        <noscript><p class="noscript">The map needs JavaScript. The steps are listed in text on this page and in the method below.</p></noscript>
+        <p class="sr-only" id="map-desc">A change starts with me and the overseer (a lead agent that runs the project), which plans the work and passes scoped slices to specialists. The analyst profiles the data. A proposal with backup and rollback is the first gate. The builder makes the change, an independent reviewer checks it and the tester uses it as a user would. A parity check (the numbers before and after must match) compares key figures against the baseline, and if one moves that should not, the change goes back to the builder. Then I give a human sign-off for that specific change, and the release manager does a dry run, releases and verifies. The control room watches every overseer throughout. The ordered steps are listed below the map.</p>
+        <div id="sysmap"></div>
+        <div class="card-panel" id="card" aria-live="polite"></div>
+        <div class="steps-wrap">
+          <h3>The steps, in order</h3>
+          <ol class="steps" id="steps"></ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec alt" id="method" aria-labelledby="method-h">
+    <div class="wrap">
+      <div class="sec-head"><div><p class="kicker">The method in full</p><h2 id="method-h">Eight parts, one idea</h2></div><p>The map above, in words.</p></div>
+      <div class="method">
+        <article class="mcard"><h3>Overseer and specialists</h3><p>Each project gets one lead agent, the overseer, which runs the project. It holds the plan, talks to me, and hands scoped slices to specialist agents: an analyst (requirements and data profiling), a builder, an independent reviewer, a tester and a release manager. Only one agent writes a given file at a time. The overseer checks what comes back before anything reaches me, and specialists never approve their own work.</p></article>
+        <article class="mcard"><h3>A living state document</h3><p>Every project keeps one document: workstreams, decisions with dates, what is waiting on whom, key IDs. Agents read it first after a break, so work survives a restart and every decision has a paper trail.</p></article>
+        <article class="mcard"><h3>Gates, not trust</h3><p>Read-only by default. Changes are proposed with what, why, impact, backup and rollback before they are applied. Nothing reaches production without my explicit go for that specific change. Releases are dry-run first.</p></article>
+        <article class="mcard"><h3>Parity checks</h3><p>The numbers before and after must match. Before and after every change to a report or model, the key figures are compared value by value against a baseline. If a number moves that should not, the change does not ship. That is what makes a redesign safe to hand to leadership.</p></article>
+        <article class="mcard"><h3>Independent verification</h3><p>Answers to data questions are rechecked by a separate agent that did not produce them.</p></article>
+        <article class="mcard"><h3>Toolkits per platform</h3><p>Packaged, reusable toolkits for Power BI reports, Fabric apps and Power Platform, so every job starts from the same rules, roles and templates rather than from scratch.</p></article>
+        <article class="mcard"><h3>A control room</h3><p>A small local dashboard to watch all the overseers and their agents at once, see what needs me, and message them, with a policy on which agents may talk to which.</p></article>
+        <article class="mcard"><h3>The right model for the job</h3><p>The cheapest model that does the task well; the most capable one only where judgement or design quality matters.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="over-engineering" aria-labelledby="oe-h">
+    <div class="wrap">
+      <div class="prose">
+        <p class="kicker" style="margin-bottom:16px">A lesson learned</p>
+        <h2 id="oe-h">The toolkit that became the project</h2>
+        <p>My first personal version of this system grew into its own project. I spent two days building the system itself, and almost none of it served the goal. An independent audit called it over-engineered. It was right, so I wrote up why and rebuilt it small: a Claude Code plugin with researcher, analyst, designer, builder, tester and reviewer roles, and build and maintain skills.</p>
+        <p class="pull">The system must not become the project. Small and boring beats clever.</p>
+        <p>The lesson I carry into work: the system exists to ship things. Keep it small, keep the human out of the message-bus role, and have the assistant push back instead of agreeing.</p>
+        <h2 style="margin-top:48px;font-size:clamp(22px,2.4vw,28px)">The rules that came out of it</h2>
+      </div>
+      <ol class="rules">
+        <li>The system must not become the project.</li>
+        <li>Don’t make yourself the message bus.</li>
+        <li>Short chats over long-lived ones.</li>
+        <li>The assistant should push back.</li>
+      </ol>
+      <div class="gain">
+        <h2>The gain</h2>
+        <p>One team can run many projects in parallel, each supervised and each with an audit trail.</p>
+      </div>
+      <p class="strip-foot"><a class="link" href="projects.html#lean-agent-toolkit">See the Lean agent toolkit project <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot">
+      <div><h2>Get in touch</h2><p class="sub">Email is quickest. Repos are private; code available on request.</p></div>
+      <div class="links">
+        <a class="btn primary" href="mailto:nyall_negm@hotmail.co.uk">nyall_negm@hotmail.co.uk</a>
+        <a class="btn secondary" href="https://www.linkedin.com/in/nyall-negm/" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+    <div class="legal"><p>© 2026 Nyall Negm</p><p>London, UK</p></div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+<script src="assets/sysmap.js"></script>
+</body>
+</html>
