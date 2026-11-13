@@ -663,7 +663,6 @@ svg.sysmap.vert{max-width:440px;margin:0 auto}
 .fd-n{position:relative;grid-row:1;display:grid;justify-items:center;align-content:start;text-align:center;gap:9px;padding:0 6px;min-width:0}
 .fd-ic{position:relative;z-index:1;width:38px;height:38px;flex:none;border-radius:50%;display:grid;place-items:center;background:var(--surface);color:var(--accent-ink);box-shadow:0 0 0 1px var(--line-3),var(--sh-1);transition:box-shadow .3s var(--ease),transform .2s var(--ease)}
 .fd-ic svg{width:18px;height:18px}
-.fd-pair{position:relative;z-index:1;display:flex;gap:6px;justify-content:center}  /* two sources feeding one step */
 .fd-n.gate .fd-ic{width:30px;height:30px;margin:4px;border-radius:9px;transform:rotate(45deg);box-shadow:0 0 0 1.5px var(--accent),var(--sh-1);background:var(--accent-wash)}
 .fd-n.gate .fd-ic svg{transform:rotate(-45deg);width:15px;height:15px}
 .fd-l{font-size:12.5px;line-height:1.35;font-weight:500;color:var(--text);overflow-wrap:break-word;hyphens:auto}
@@ -681,9 +680,19 @@ svg.sysmap.vert{max-width:440px;margin:0 auto}
 .fd-rail.loop::before{border-color:var(--bad)}
 .fd-rail.loop::after{content:"";position:absolute;top:-16px;left:calc(50% / var(--span) - 5.5px);border:solid transparent;border-width:0 5px 7px;border-bottom-color:var(--bad)}
 .fd-rail.loop .fd-ic{color:var(--bad);box-shadow:0 0 0 1px color-mix(in srgb,var(--bad) 40%,transparent)}
+/* several sources, one per line, bracketed into the next step (e.g. two systems feeding one platform) */
+.flowd.merge .fd-stack{display:grid;gap:12px;align-self:start;align-content:start;justify-items:start;padding:0 26px 0 6px;text-align:left}
+.fd-sub{display:flex;align-items:center;gap:10px;min-height:38px;min-width:0}
+.fd-sub .fd-l{text-align:left}
+.flowd.merge .fd-stack::after{content:"";position:absolute;right:8px;top:19px;bottom:19px;width:12px;border:1.5px solid var(--edge);border-left:0;border-radius:0 9px 9px 0;transition:border-color .3s var(--ease)}
+.flowd.merge.in .fd-stack::after{border-color:var(--accent)}
+.flowd.merge .fd-n:not(.fd-stack){margin-top:25px}
+.flowd.merge .fd-stack+.fd-arr+.fd-n::before{left:-6px}
+.flowd.merge .fd-rail{margin-top:-6px}
 /* narrow: stack the steps */
 @container (max-width:560px){
   .fd-vis{grid-template-columns:minmax(0,1fr);row-gap:12px;padding:14px}
+  .flowd.merge .fd-stack{padding:0 0 0 0;gap:8px}.flowd.merge .fd-stack::after{display:none}.flowd.merge .fd-n:not(.fd-stack){margin-top:0}.flowd.merge .fd-stack+.fd-arr+.fd-n::before{left:18px}.flowd.merge .fd-rail{margin-top:0}
   .fd-n{grid-row:auto;display:flex;align-items:center;justify-items:start;text-align:left;gap:12px;padding:0}
   .fd-n~.fd-n::before{top:-12px;left:18px;right:auto;width:1.5px;height:12px}
   .fd-n.gate~.fd-n::before,.fd-n~.fd-n.gate::before{left:18px}
