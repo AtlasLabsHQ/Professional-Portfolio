@@ -663,6 +663,7 @@ svg.sysmap.vert{max-width:440px;margin:0 auto}
 .fd-n{position:relative;grid-row:1;display:grid;justify-items:center;align-content:start;text-align:center;gap:9px;padding:0 6px;min-width:0}
 .fd-ic{position:relative;z-index:1;width:38px;height:38px;flex:none;border-radius:50%;display:grid;place-items:center;background:var(--surface);color:var(--accent-ink);box-shadow:0 0 0 1px var(--line-3),var(--sh-1);transition:box-shadow .3s var(--ease),transform .2s var(--ease)}
 .fd-ic svg{width:18px;height:18px}
+.fd-pair{position:relative;z-index:1;display:flex;gap:6px;justify-content:center}  /* two sources feeding one step */
 .fd-n.gate .fd-ic{width:30px;height:30px;margin:4px;border-radius:9px;transform:rotate(45deg);box-shadow:0 0 0 1.5px var(--accent),var(--sh-1);background:var(--accent-wash)}
 .fd-n.gate .fd-ic svg{transform:rotate(-45deg);width:15px;height:15px}
 .fd-l{font-size:12.5px;line-height:1.35;font-weight:500;color:var(--text);overflow-wrap:break-word;hyphens:auto}
