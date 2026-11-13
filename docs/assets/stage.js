@@ -170,6 +170,7 @@
     [].forEach.call(f.querySelectorAll('.mode [data-mode]'), function (b) { b.setAttribute('aria-pressed', String((b.getAttribute('data-mode') === 'agents') === on)); });
     cur.journey.fit(true); cur.journey.refresh();
     try { sessionStorage.setItem('nn-mode', on ? 'agents' : 'hand'); } catch (e) { /* storage can be blocked */ }
+    if (!silent) { try { document.dispatchEvent(new CustomEvent('nn-mode', { detail: on })); } catch (e) { /* old browsers */ } }
     if (!silent) { writeURL(); live(on ? 'With agents: build help and data agents marked on the journey, with what agents take and what I still own.' : 'By hand: the work I do myself at each step.'); }
   }
   /* the switch: two buttons with aria-pressed; arrow keys move between them */

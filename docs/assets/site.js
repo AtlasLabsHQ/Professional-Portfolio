@@ -59,6 +59,42 @@
     el.textContent = [y ? y + (y > 1 ? ' yrs' : ' yr') : '', m ? m + (m > 1 ? ' mos' : ' mo') : ''].join(' ').trim();
   });
 
+  /* ---- projects: By hand | With agents, for every case study at once or one card at a time ----
+     Shares the Try it stages' choice (sessionStorage "nn-mode"), so a demo opens in the mode its card is showing. */
+  (function () {
+    var cases = [].slice.call(document.querySelectorAll('.case')), all = document.querySelector('.mode[data-scope="all"]');
+    if (!cases.length || !all) return;
+    var liveEl = document.getElementById('mode-live');
+    function saved() { try { return sessionStorage.getItem('nn-mode') === 'agents'; } catch (e) { return false; } }
+    function save(on) { try { sessionStorage.setItem('nn-mode', on ? 'agents' : 'hand'); } catch (e) { /* storage can be blocked */ } }
+    function press(g, on) { [].forEach.call(g.querySelectorAll('[data-mode]'), function (b) { b.setAttribute('aria-pressed', on == null ? 'false' : String((b.getAttribute('data-mode') === 'agents') === on)); }); }
+    function setCard(c, on) { c.classList.toggle('agents-on', on); c.classList.toggle('agents-off', !on); var g = c.querySelector('.mode'); if (g) press(g, on); }
+    function syncAll() { var n = cases.filter(function (c) { return c.classList.contains('agents-on'); }).length; press(all, n === cases.length ? true : n === 0 ? false : null); }
+    function setAll(on) { cases.forEach(function (c) { setCard(c, on); }); press(all, on); }
+    function wire(g, fn) {
+      var bs = [].slice.call(g.querySelectorAll('[data-mode]'));
+      bs.forEach(function (b, i) {
+        b.addEventListener('click', function () { fn(b.getAttribute('data-mode') === 'agents'); });
+        b.addEventListener('keydown', function (e) {
+          if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+          e.preventDefault(); var o = bs[1 - i]; o.focus(); fn(o.getAttribute('data-mode') === 'agents');
+        });
+      });
+    }
+    setAll(saved());
+    wire(all, function (on) {
+      setAll(on); save(on);
+      if (liveEl) liveEl.textContent = on ? 'With agents: every case study now shows how agents help.' : 'By hand: every case study shows the work I do myself.';
+    });
+    cases.forEach(function (c) {
+      var g = c.querySelector('.mode'), name = (c.querySelector('.ptitle') || {}).textContent || 'this case study';
+      if (g) wire(g, function (on) { setCard(c, on); syncAll(); if (liveEl) liveEl.textContent = name + (on ? ': with agents.' : ': by hand.'); });
+      var tryIt = c.querySelector('[data-stage]');
+      if (tryIt) tryIt.addEventListener('click', function () { save(c.classList.contains('agents-on')); });
+    });
+    document.addEventListener('nn-mode', function (e) { setAll(!!e.detail); });
+  })();
+
   /* ---- timeline tabs (arrow keys, Home, End) ---- */
   var tabs = [].slice.call(document.querySelectorAll('.stop'));
   function select(t, focus) {

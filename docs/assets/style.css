@@ -994,3 +994,15 @@ svg.sysmap.vert{max-width:440px;margin:0 auto}
 .cc-mini b{font-weight:600;color:var(--text);padding:2px 9px;border-radius:999px;background:var(--surface);box-shadow:inset 0 0 0 1px var(--line-3)}
 .cc-mini>span[aria-hidden]{color:var(--faint)}
 .xlane-cc{grid-column:1/-1}
+
+/* Projects: By hand | With agents, for every case study (top) or one card at a time. By hand hides the agent box. */
+.mode-all{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin-top:var(--s4)}
+.mode-hint{font-size:13px;color:var(--muted)}
+.case-top{flex-wrap:wrap}
+.mode-sm{margin-left:auto}
+.mode-sm button{min-height:30px;padding:0 10px;font-size:12.5px}
+.case.agents-off .case-dl .ag{display:none}
+.case.agents-on .case-dl .ag{animation:ag-in .35s ease-out}
+@keyframes ag-in{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.case.agents-on .case-dl .ag{animation:none}}
+@media print{.mode-all,.mode-sm{display:none}.case.agents-off .case-dl .ag{display:grid}}
