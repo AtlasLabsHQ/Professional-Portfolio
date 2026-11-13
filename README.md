@@ -1,4 +1,4 @@
-# Nyall Negm: portfolio site
+# Nyall Negm: Portfolio Site
 
 My personal portfolio and interactive CV: career, work case studies, an interactive platform explorer with a live BI
 demo, and how I build: hands-on, and now with agents. Plain HTML, CSS and JavaScript, light and dark themes.
