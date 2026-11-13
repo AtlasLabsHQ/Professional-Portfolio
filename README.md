@@ -3,8 +3,8 @@
 My personal portfolio and interactive CV: career, work case studies, an interactive platform explorer with a live BI
 demo, and how I build: hands-on, and now with agents. Plain HTML, CSS and JavaScript, light and dark themes.
 
-Live: https://atlaslabshq.github.io/portfolio/ · [Platform explorer](https://atlaslabshq.github.io/portfolio/explore.html) ·
-[How I work with AI](https://atlaslabshq.github.io/portfolio/how-i-work.html) (the interactive version of the diagram below)
+Live: https://atlaslabshq.github.io/Professional-Portfolio/ · [Platform explorer](https://atlaslabshq.github.io/Professional-Portfolio/explore.html) ·
+[How I work with AI](https://atlaslabshq.github.io/Professional-Portfolio/how-i-work.html) (the interactive version of the diagram below)
 
 ## How a change moves (the method, as a flowchart)
 

@@ -27,3 +27,7 @@ CLAUDE.md
 .env
 .env.*
 *.zip
+
+# Private working files kept beside the site in this folder
+Nyall-Portfolio-Handover-*/
+portfolio-repo/
