@@ -62,7 +62,8 @@ p{margin:0}
 ::selection{background:color-mix(in srgb,var(--accent) 22%,transparent)}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
-body.wide{--max:1440px}  /* app-like pages (explorer, BI demo) use the wider frame, header and footer included */
+body.wide{--max:1440px}
+body.fluid{--max:clamp(1200px,82vw,1600px)}  /* grows with the screen: 1200px on a laptop, wider on big monitors, capped for readable lines */  /* app-like pages (explorer, BI demo) use the wider frame, header and footer included */
 .skip{position:absolute;left:var(--s4);top:-60px;background:var(--accent);color:var(--on-accent);padding:var(--s2) var(--s4);border-radius:8px;z-index:60;font-weight:600;text-decoration:none}
 .skip:focus{top:var(--s3)}
 .sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
@@ -761,7 +762,6 @@ svg.sysmap.vert{max-width:440px;margin:0 auto}
 .ct-names li{font-size:13px;font-weight:500;padding:4px 10px;border-radius:999px;background:var(--surface);border:1px solid var(--line-2);display:inline-flex;align-items:center;gap:6px}
 /* projects: work case studies, summary first */
 .case-list{display:grid;gap:var(--s4)}
-@media (min-width:1000px){.case-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .case{display:flex;flex-direction:column;gap:var(--s4);background:var(--surface);border:1px solid var(--line-2);border-radius:var(--r-xl);box-shadow:var(--sh-1);padding:clamp(20px,2.6vw,32px);scroll-margin-top:84px;min-width:0;transition:box-shadow .2s,border-color .2s}
 .case:hover{box-shadow:var(--sh-2);border-color:var(--line-3)}
 .case:target{box-shadow:0 0 0 2px var(--accent),var(--sh-2)}
@@ -794,6 +794,11 @@ svg.sysmap.vert{max-width:440px;margin:0 auto}
 .case-more-b h4{font:600 11.5px/1.4 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin:0 0 var(--s2)}
 .case-more-b>p{font-size:15px;line-height:1.65}
 .case-more .proj-flow{margin-top:var(--s5);padding-top:var(--s4)}
+/* One case study per row (any number of them lines up). From laptop width: the story on the left, the outcomes on the right. */
+@media (min-width:900px){
+  .case{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);grid-template-areas:"top dl" "hands dl" "act dl" "more more";column-gap:clamp(24px,3vw,44px);row-gap:var(--s4);align-items:start}
+  .case-top{grid-area:top}.hands{grid-area:hands}.case-dl{grid-area:dl;align-self:stretch;align-content:start}.case-act{grid-area:act;margin-top:0;padding-top:0}.case-more{grid-area:more}
+}
 /* projects: the code section */
 #code{padding-top:var(--s8)}
 .repos{list-style:none;margin:0;padding:0;display:grid;gap:var(--s3)}
