@@ -1,7 +1,7 @@
 /* The eight stages. Each one: a journey (the systems it touches, in order, and what runs each), a By hand and a
    With agents view (what I do myself; what agents take and what I still own), and one
    hero interaction worth about a minute. Mounted by stage.js. Every name, record and figure here is invented.
-   Sections: 1 shared, 2 group data platform, 3 executive scorecard, 4 automations, 5 agent control room,
+   Sections: 1 shared, 2 group data platform, 3 executive reporting, 4 automations, 5 agent control room,
    6 agentic delivery suite, 7 order-tracking app, 8 data Q&A desk, 9 workbook rebuilds. */
 (function () {
   'use strict';
@@ -27,7 +27,7 @@
       (o.value ? '<p class="lval"><span>' + esc(o.vl) + '</span><b>' + o.value + '</b></p>' : '') + '</div>' +
       '<div class="lyr-side"><h4>' + esc(o.st) + '</h4>' + o.side + '</div></div>';
   }
-  /* "Where does this number come from?" The same figure at each layer, from the source to the scorecard.
+  /* "Where does this number come from?" The same figure at each layer, from the source to the report.
      The duplicates and the test order are invented, so the cleaning step has something to do. */
   const LDEF = {
     rev: { name: 'Revenue', model: 'Revenue = sum of net revenue', ready: 'Net of returns, with internal transfers left out.' },
@@ -65,7 +65,7 @@
     J('Cleaned', 'clean', 'Types fixed, duplicates removed, filed by subject area.', 'Scheduled', 'Cleaning logic can be drafted with agent help; I review it and sign it off.'),
     J('Business-ready', 'ready', 'Joined and defined with the business’s own definitions.', 'Scheduled', 'Changes here can be built with agent help; I review and sign them off.'),
     J('Semantic model', 'model', 'One governed definition of each measure, with row-level security. A governed layer of data that people and AI can both use.', 'Scheduled refresh', 'Model changes can be built with agent help, parity-checked figure by figure; I sign them off.', 'A data agent asks questions of this model, read-only. It reads the model; it is not part of it.'),
-    J('Report', 'chart', 'The record counts towards a figure on the executive scorecard.', 'Scheduled refresh', 'Report changes can be built with agent help; I review and sign them off.'),
+    J('Report', 'chart', 'The record counts towards a figure on the executive reporting.', 'Scheduled refresh', 'Report changes can be built with agent help; I review and sign them off.'),
     J('Leader', 'person', 'A leader reads it, and sees only the rows they are meant to.', 'Person')
   ];
   const P_LAYERS = [
@@ -74,8 +74,8 @@
     { t: 'Cleaned', d: 'Types fixed and the duplicate removed. Filed under its subject area: finance, sales.', rule: 'If cleaning fails, later layers keep the last good data, so nothing half-done is ever published.', rows: [['order_ref', 'HP-1042'], ['amount', '£4,820.00 (number)', 'chg'], ['order_date', '2024-09-14 (date)', 'chg'], ['_copies', '1', 'chg'], ['subject_area', 'Finance, sales', 'chg']] },
     { t: 'Business-ready', d: 'Joined to products and regions, and defined with the business’s own definitions.', rule: 'May carry on with yesterday’s product list if that one source is late; must stop if the sales data itself fails.', rows: [['order_ref', 'HP-1042'], ['product_line', 'Tents & Shelters', 'chg'], ['region', 'North', 'chg'], ['net_revenue', '£4.82k', 'chg'], ['definition', 'Net of returns; transfers out', 'chg']] },
     { t: 'Semantic model', d: 'It counts towards the governed Revenue measure. Row-level security decides who can see it.', rows: [['measure', 'Revenue'], ['visible_to', 'C-suite, North leader', 'chg'], ['hidden_from', 'Midlands and South leaders', 'chg']] },
-    { t: 'Report', d: 'It is part of North revenue on the executive scorecard, refreshed through the day.', rows: [['tile', 'Revenue, North, year to date'], ['includes', 'HP-1042, line 2'], ['refreshed', 'Through the day']] },
-    { t: 'Leader', d: 'The North leader reads the scorecard and sees North’s figures, and nobody else’s.', rows: [['seen_by', 'North leader, C-suite'], ['as part of', 'Revenue, year to date'], ['not seen by', 'Other regions’ leaders']] }
+    { t: 'Report', d: 'It is part of North revenue on the executive reporting, refreshed through the day.', rows: [['tile', 'Revenue, North, year to date'], ['includes', 'HP-1042, line 2'], ['refreshed', 'Through the day']] },
+    { t: 'Leader', d: 'The North leader reads the report and sees North’s figures, and nobody else’s.', rows: [['seen_by', 'North leader, C-suite'], ['as part of', 'Revenue, year to date'], ['not seen by', 'Other regions’ leaders']] }
   ];
   const TRACE_SCOPE = function () { return { regions: ['north'], products: window.HP.PRODUCTS.map(function (p) { return p.id; }), months: range(24, 32), label: 'North, all product lines, January to September 2024', who: 'North leader’s role: North rows only' }; };
 
@@ -133,14 +133,14 @@
     return { follow: function () { play('follow'); }, trace: function () { play('trace'); } };
   }
 
-  /* ======================= 3. EXECUTIVE SCORECARD ======================= */
+  /* ======================= 3. EXECUTIVE REPORTING ======================= */
   const J_EXEC = [
     J('Sources', 'db', 'Finance and client data start in the source systems. Read, never changed.', 'Read-only'),
     J('Raw', 'raw', 'Lands as it arrived, so there is always a trail back.', 'Scheduled'),
     J('Cleaned', 'clean', 'Duplicates and test records removed, types fixed.', 'Scheduled'),
     J('Business-ready', 'ready', 'Joined and defined with the business’s own definitions.', 'Scheduled', 'Changes here can be built with agent help; I review and sign them off.'),
     J('Semantic model', 'model', 'Actual, budget, latest estimate and prior year, with row-level security so each leader sees their own figures.', 'Scheduled refresh', 'Model changes can be built with agent help and parity-checked figure by figure; I sign them off.', 'A data agent, being added, will ask questions of this model for leaders, read-only.'),
-    J('Scorecard', 'chart', 'One governed view for the C-suite instead of separate packs.', 'Scheduled refresh', 'Report changes can be built with agent help; I review and sign them off.'),
+    J('Report', 'chart', 'One governed view for the C-suite instead of separate packs.', 'Scheduled refresh', 'Report changes can be built with agent help; I review and sign them off.'),
     J('Leaders', 'person', 'The C-suite and regional leaders, each seeing their own figures.', 'Person')
   ];
   function pExec(host, ctx) {
@@ -152,7 +152,7 @@
       const T = steps[step], D = LDEF[key];
       lin.innerHTML = '<div class="lin-head"><div><p class="eyebrow">Where does this number come from?</p><h3 id="e-lin-h" tabindex="-1">' + esc(D.name) + ' · ' + esc(scope.label) + '</h3></div><button type="button" class="btn ghost small" id="e-lin-x">Close the trace</button></div>' +
         layerCard({ eb: 'Step ' + (6 - step) + ' of 6 · back towards the source', t: J_EXEC[step].label, d: T.d, vl: T.vl, value: T.value, st: T.st, side: T.side }) +
-        '<div class="lyr-nav"><button type="button" class="btn secondary small" id="e-up"' + (step >= 5 ? ' aria-disabled="true"' : '') + '><span aria-hidden="true">←</span>Towards the scorecard</button><p class="lyr-pos" aria-live="polite"><span class="n">' + (6 - step) + ' / 6</span>' + esc(J_EXEC[step].label) + '</p>' +
+        '<div class="lyr-nav"><button type="button" class="btn secondary small" id="e-up"' + (step >= 5 ? ' aria-disabled="true"' : '') + '><span aria-hidden="true">←</span>Towards the report</button><p class="lyr-pos" aria-live="polite"><span class="n">' + (6 - step) + ' / 6</span>' + esc(J_EXEC[step].label) + '</p>' +
         '<button type="button" class="btn primary small" id="e-down"' + (step <= 0 ? ' aria-disabled="true"' : '') + '>Towards the source<span aria-hidden="true">→</span></button></div>';
       ctx.$('e-lin-x').addEventListener('click', closeLin);
       ctx.$('e-up').addEventListener('click', function () { if (step < 5) { step++; draw(); ctx.$('e-up').focus(); } });
@@ -1019,8 +1019,8 @@
     agents: [['build', 'Drafting changes to cleaning logic, a model or a report, for me to review.', 'The design, the definitions, and the sign-off before production.'],
       ['auto', 'Running the chain through the day and alerting at the stage that failed. No AI.', 'Deciding what may carry on and what must stop.'],
       ['data', 'Answering ad hoc questions by reading the governed model, read-only.', 'The model and the definitions it answers from.']] });
-  S.define('exec', { title: 'Executive scorecard', eyebrow: 'Live demo · invented data', icon: 'chart', journey: J_EXEC, mount: pExec,
-    hand: [['Business-ready', 'I agree each definition with finance before it goes in.'], ['Semantic model', 'I write the measures in DAX, from actual and budget to latest estimate and prior year, and set the row-level security.'], ['Scorecard', 'I design the pages around how leaders read them, and check every figure against the source.'], ['Leaders', 'I take their questions and build the common ones into the report.']],
+  S.define('exec', { title: 'Executive reporting', eyebrow: 'Live demo · invented data', icon: 'chart', journey: J_EXEC, mount: pExec,
+    hand: [['Business-ready', 'I agree each definition with finance before it goes in.'], ['Semantic model', 'I write the measures in DAX, from actual and budget to latest estimate and prior year, and set the row-level security.'], ['Report', 'I design the pages around how leaders read them, and check every figure against the source.'], ['Leaders', 'I take their questions and build the common ones into the report.']],
     agents: [['build', 'Drafting a report or model change, with a separate review of it.', 'What the page should say and how leaders read it, and the sign-off.'],
       ['build', 'Comparing every key figure before and after a change, value by value.', 'The baseline, and the call when a number moves.'],
       ['data', 'Answering leaders’ own questions from the model (being added), read-only.', 'The governed model it reads.']] });

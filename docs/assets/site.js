@@ -116,7 +116,7 @@
   var STAGES = [
     ['platform', 'Group data platform', 'follow the data lineage'], ['auto', 'Automation suite', 'approval run data sync flows'],
     ['control', 'Agent control room', 'run a project overseer'], ['suite', 'Agentic delivery suite', 'run a change parity check'],
-    ['exec', 'Executive scorecard', 'bi demo lineage metric'], ['apps', 'Order-tracking app', 'business app orders audit'],
+    ['exec', 'Executive reporting', 'bi demo lineage metric'], ['apps', 'Order-tracking app', 'business app orders audit'],
     ['qa', 'Data Q&A desk', 'question answer recheck'], ['workbook', 'Workbook rebuilds', 'excel spreadsheet parity']
   ];
   /* open a stage in place: inline on the explorer, as an overlay anywhere else */
@@ -171,7 +171,7 @@
       .forEach(function (p) { C.push({ g: 'Pages', t: p[0], run: function () { go(p[1]); } }); });
     STAGES.forEach(function (s) { C.push({ g: 'Try a demo', t: s[1], k: s[2], run: function (o) { NN.openStage(s[0], { opener: o }); } }); });
     [['group-data-platform', 'Group data platform'], ['automation-suite', 'Automation suite'], ['agent-control-room', 'Agent control room'], ['agentic-delivery-suite', 'Agentic delivery suite'],
-      ['executive-scorecard', 'Executive scorecard'], ['order-tracking-app', 'Order-tracking app'], ['data-qa-desk', 'Data Q&A desk'], ['workbook-rebuilds', 'Workbook rebuilds'],
+      ['executive-reporting', 'Executive reporting'], ['order-tracking-app', 'Order-tracking app'], ['data-qa-desk', 'Data Q&A desk'], ['workbook-rebuilds', 'Workbook rebuilds'],
       ['money-ledger', 'Money Ledger'], ['lean-agent-toolkit', 'Lean agent toolkit'], ['the-nook', 'The Nook'], ['media-library-tools', 'Media library tools'], ['3d-models', '3D models']]
       .forEach(function (c, i) { C.push({ g: i < 8 ? 'Case studies' : 'Personal projects', t: c[1], k: 'read case study', run: function () { go('projects.html#' + c[0]); } }); });
     C.push({ g: 'Actions', t: 'Request my full CV', k: 'email cv download', run: function () { location.href = 'mailto:nyall_negm@hotmail.co.uk?subject=CV%20request'; } });

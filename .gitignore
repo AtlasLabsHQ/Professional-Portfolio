@@ -1,4 +1,29 @@
+# Build leftovers
 _screens/
 *.tmp
 .DS_Store
 Thumbs.db
+node_modules/
+
+# This repo is the public site only (docs/ + README.md).
+# Never commit anything personal or private. These are listed so a stray copy can't be pushed by accident.
+leakage-terms.txt
+leak_check.py
+*.docx
+*.doc
+*.pdf
+~$*
+cv/
+_source/
+_build/
+content/
+tools/
+HANDOVER.md
+PROJECT_STATE.md
+CLAUDE.md
+.claude/
+*handover*/
+*Handover*/
+.env
+.env.*
+*.zip
