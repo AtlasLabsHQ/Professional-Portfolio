@@ -894,6 +894,10 @@ svg.sysmap.vert{max-width:440px;margin:0 auto}
 .role-h{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px 16px;margin-bottom:var(--s3)}
 .role-h h3{font-size:clamp(18px,1.8vw,21px);font-weight:650}
 .role-h .org{font-size:14.5px;color:var(--muted);margin-top:3px}
+.role-dates{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.dur{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;padding-right:10px}
+.sub-when{display:block;font-size:13.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+@media (max-width:560px){.role-dates{flex-direction:row;align-items:baseline;gap:10px}.dur{padding-right:0}}
 .when{font:600 13px var(--sans);color:var(--accent-ink);background:var(--accent-wash);padding:3px 10px;border-radius:999px;white-space:nowrap;font-variant-numeric:tabular-nums}
 .ach{list-style:none;margin:0;padding:0;display:grid;gap:8px}
 .ach li{position:relative;padding-left:20px;font-size:15px;line-height:1.6}
@@ -967,6 +971,9 @@ svg.sysmap.vert{max-width:440px;margin:0 auto}
   .cv .role-h h3{font-size:10.5pt}
   .cv .role-h .org{font-size:9pt;margin-top:0;color:#4b5160}
   .cv .when{font-size:8.5pt;background:none;padding:0;color:#1f3cc0}
+  .cv .role-dates{flex-direction:row;align-items:baseline;gap:6pt}
+  .cv .dur,.cv .sub-when{font-size:8.5pt;padding:0;color:#4b5160}
+  .cv .sub-when{display:inline;margin-left:4pt}
   .cv .ach{gap:1pt!important}
   .cv .ach li{font-size:8.9pt!important;line-height:1.36!important;padding-left:9pt}
   .cv .ach li::before{left:0;top:.62em;width:3.5pt;height:3.5pt}

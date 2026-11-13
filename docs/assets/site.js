@@ -52,6 +52,13 @@
     } else [].forEach.call(flows, function (f) { f.classList.add('in'); });
   }
 
+  /* ---- role lengths, LinkedIn style: the current role keeps counting (start and end months both count) ---- */
+  [].forEach.call(document.querySelectorAll('.dur[data-start]'), function (el) {
+    var p = el.getAttribute('data-start').split('-'), d = new Date();
+    var n = (d.getFullYear() - +p[0]) * 12 + (d.getMonth() + 1 - +p[1]) + 1, y = Math.floor(n / 12), m = n % 12;
+    el.textContent = [y ? y + (y > 1 ? ' yrs' : ' yr') : '', m ? m + (m > 1 ? ' mos' : ' mo') : ''].join(' ').trim();
+  });
+
   /* ---- timeline tabs (arrow keys, Home, End) ---- */
   var tabs = [].slice.call(document.querySelectorAll('.stop'));
   function select(t, focus) {
