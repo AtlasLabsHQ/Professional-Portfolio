@@ -178,9 +178,9 @@
       .forEach(function (p) { C.push({ g: 'Pages', t: p[0], run: function () { go(p[1]); } }); });
     STAGES.forEach(function (s) { C.push({ g: 'Try a demo', t: s[1], k: s[2], run: function (o) { NN.openStage(s[0], { opener: o }); } }); });
     [['group-data-platform', 'Group data platform'], ['automation-suite', 'Automation suite'], ['agent-control-room', 'Agent control room'], ['agentic-delivery-suite', 'Agentic delivery suite'],
-      ['executive-reporting', 'Executive reporting'], ['order-tracking-app', 'Order-tracking app'], ['data-qa-desk', 'Data Q&A desk'], ['workbook-rebuilds', 'Workbook rebuilds'],
+      ['post-merger-integration', 'Post-merger data integration'], ['executive-reporting', 'Executive reporting'], ['order-tracking-app', 'Order-tracking app'], ['data-qa-desk', 'Data Q&A desk'], ['workbook-rebuilds', 'Workbook rebuilds'],
       ['money-ledger', 'Money Ledger'], ['lean-agent-toolkit', 'Lean agent toolkit'], ['the-nook', 'The Nook'], ['media-library-tools', 'Media library tools'], ['3d-models', '3D models']]
-      .forEach(function (c, i) { C.push({ g: i < 8 ? 'Case studies' : 'Personal projects', t: c[1], k: 'read case study', run: function () { go('projects.html#' + c[0]); } }); });
+      .forEach(function (c, i) { C.push({ g: i < 9 ? 'Case studies' : 'Personal projects', t: c[1], k: 'read case study', run: function () { go('projects.html#' + c[0]); } }); });
     C.push({ g: 'Actions', t: 'Request my full CV', k: 'email cv download', run: function () { location.href = 'mailto:nyall_negm@hotmail.co.uk?subject=CV%20request'; } });
     C.push({ g: 'Actions', t: 'Take the 60-second tour', k: 'guided tour', run: function (o) { NN.loadStage('platform').then(function () { window.NNStage.tour(o); }); } });
     C.push({ g: 'Actions', t: dark ? 'Switch to light theme' : 'Switch to dark theme', k: 'theme dark light mode', run: function () { setTheme(dark ? 'light' : 'dark'); } });

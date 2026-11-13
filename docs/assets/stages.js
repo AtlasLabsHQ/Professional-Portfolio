@@ -139,7 +139,7 @@
     J('Raw', 'raw', 'Lands as it arrived, so there is always a trail back.', 'Scheduled'),
     J('Cleaned', 'clean', 'Duplicates and test records removed, types fixed.', 'Scheduled'),
     J('Business-ready', 'ready', 'Joined and defined with the business’s own definitions.', 'Scheduled', 'Changes here can be built with agent help; I review and sign them off.'),
-    J('Semantic model', 'model', 'Actual, budget, latest estimate and prior year, with row-level security so each leader sees their own figures.', 'Scheduled refresh', 'Model changes can be built with agent help and parity-checked figure by figure; I sign them off.', 'A data agent, being added, will ask questions of this model for leaders, read-only.'),
+    J('Semantic model', 'model', 'Actual, budget, latest estimate and prior year, with row-level security so each leader sees their own figures.', 'Scheduled refresh', 'Model changes can be built with agent help and parity-checked figure by figure; I sign them off.', 'A data agent answers leaders’ questions from this model, read-only.'),
     J('Report', 'chart', 'One governed view for the C-suite instead of separate packs.', 'Scheduled refresh', 'Report changes can be built with agent help; I review and sign them off.'),
     J('Leaders', 'person', 'The C-suite and regional leaders, each seeing their own figures.', 'Person')
   ];
@@ -1023,7 +1023,7 @@
     hand: [['Business-ready', 'I agree each definition with finance before it goes in.'], ['Semantic model', 'I write the measures in DAX, from actual and budget to latest estimate and prior year, and set the row-level security.'], ['Report', 'I design the pages around how leaders read them, and check every figure against the source.'], ['Leaders', 'I take their questions and build the common ones into the report.']],
     agents: [['build', 'Drafting a report or model change, with a separate review of it.', 'What the page should say and how leaders read it, and the sign-off.'],
       ['build', 'Comparing every key figure before and after a change, value by value.', 'The baseline, and the call when a number moves.'],
-      ['data', 'Answering leaders’ own questions from the model (being added), read-only.', 'The governed model it reads.']] });
+      ['data', 'Answering leaders’ own questions from the model, read-only.', 'The governed model it reads.']] });
   S.define('auto', { title: 'Automation suite', eyebrow: 'Simulations · invented data', icon: 'bolt', journey: J_APPROVAL, mount: pAuto,
     hand: [['Tracked list', 'I build the flows in Power Automate, with SharePoint and Dataverse behind them.'], ['Approval chain', 'I design the routing and the reminders with the people who approve.'], ['Daily monitor', 'I built the read-only health checks and the daily digest.'], ['Sync flows', 'I build the dataflow and the create, update and archive flows.']],
     agents: [['build', 'Drafting a flow change in code and comparing it with what is live. It never runs a flow.', 'Approving the change before it reaches production.'],
