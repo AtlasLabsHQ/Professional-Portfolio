@@ -6,7 +6,7 @@
     { id: 'sources', title: 'Sources', sub: 'where data starts', nodes: ['src-dw', 'src-cube', 'src-sp', 'src-files'] },
     { id: 'platform', title: 'Data platform', sub: 'raw, cleaned, business-ready', nodes: ['raw', 'cleaned', 'ready', 'orch'] },
     { id: 'serving', title: 'Serving', sub: 'what apps and reports read', nodes: ['models', 'sqldb', 'agents'] },
-    { id: 'exp', title: 'Experiences', sub: 'what people use', nodes: ['exec', 'apps', 'auto', 'qa', 'workbook'] },
+    { id: 'exp', title: 'Experiences', sub: 'what people use', nodes: ['exec', 'apps', 'auto', 'qa', 'workbook', 'merge'] },
     { id: 'people', title: 'People', sub: 'who it is for', nodes: ['csuite', 'leaders', 'ops', 'clients'] }
   ];
   const LANE = { id: 'build', title: 'How it gets built', sub: 'One delivery method behind all of the above. I can run every step by hand; now my agents help run it, with me reviewing and signing off.', nodes: ['control', 'suite'] };
@@ -45,6 +45,7 @@
     clients: { label: 'Clients', what: 'The clients the group serves.', changed: 'KPI reporting taken from scoping to live service.', role: 'Client reporting designed and built.' },
     suite: { label: 'Agentic delivery suite', badge: 'Try it', kind: 'suite', what: 'Toolkits for Power BI reports, Fabric apps and Power Platform, each with roles for requirements, build, independent review, testing and release, under an overseer with a state document and human sign-off.', changed: 'Many projects in parallel, each supervised, each with an audit trail.', role: 'Designed and built.', link: ['how-i-work.html#map', 'See the system map on How I work'] },
     control: { label: 'Agent control room', badge: 'Try it', kind: 'control', what: 'A small local dashboard to supervise many AI agent projects at once: a map of every project lead (overseer) by area, the specialist agents under each, a “needs you” stack of decisions waiting on a person, and a console to read and message each one. A policy decides which agents may message which. It runs on the laptop and uses no AI itself.', changed: 'One person can oversee many parallel workstreams without losing track or becoming the message bus.', role: 'Designed and built.', link: ['how-i-work.html#method', 'Read the method in full'] },
+    merge: { label: 'Post-merger integration', what: 'Two mature booking and billing systems, one from each company before the merger, running side by side with some records held in both for billing. Reporting counts each item once, and on set occasions data moves from one into the other through the platform, checked with local teams and parity checks.', changed: 'Combined figures that count each item once, and a checked way to move data between the two systems.', role: 'Data lead on the integration. Ongoing.' },
     workbook: { label: 'Workbook rebuilds', badge: 'Try it', kind: 'workbook', what: 'Takes complex legacy Excel workbooks, works out what they really do, then redesigns, rebuilds and tests them as drop-in replacements.', changed: 'Fragile spreadsheets become tested, maintainable tools.', role: 'Designed and built.' }
   };
 
@@ -66,7 +67,7 @@
     ['ready', 'models'], ['ready', 'sqldb'], ['models', 'agents'],
     ['models', 'exec'], ['agents', 'qa'], ['sqldb', 'apps'], ['sqldb', 'auto'],
     ['exec', 'csuite'], ['exec', 'leaders'], ['exec', 'clients'], ['qa', 'leaders'], ['apps', 'ops'], ['auto', 'ops'],
-    ['control', 'suite', 'watches'], ['workbook', 'ops']
+    ['control', 'suite', 'watches'], ['workbook', 'ops'], ['ready', 'merge'], ['merge', 'ops'], ['merge', 'leaders']
   ];
 
   const DATA = { LAYERS: LAYERS, LANE: LANE, PIPE: PIPE, NODES: NODES, FOLLOW: FOLLOW, EDGES: EDGES };
